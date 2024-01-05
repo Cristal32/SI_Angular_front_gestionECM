@@ -38,24 +38,36 @@ export class StagesComponent {
     this.ListeStages = [
       {
         id: 1,
-        promo: {
-          annee: 2023
-        },
+        annee: 2024,
         etudiant:{
           id: 1,
           nom: 'Atatri',
-          prenom: 'Doaa'
+          prenom: 'Doaa',
+          adrs: 'Kenitra',
+          dateNaissance: new Date(2002,5,1),
+          sexe: 'F',
+          tel: '0000000000',
+          mention: 'Tres bien',
+          promo: {
+            annee: 2022
+          }
         }
       },
       {
         id: 2,
-        promo: {
-          annee: 2023
-        },
+        annee: 2024,
         etudiant:{
-          id: 2,
+          id: 1,
           nom: 'Braikat',
-          prenom: 'Fatima Zahra'
+          prenom: 'Fatima Zahra',
+          adrs: 'Casa',
+          dateNaissance: new Date(2002,6,2),
+          sexe: 'F',
+          tel: '1111111111',
+          mention: 'Tres bien',
+          promo: {
+            annee: 2022
+          }
         }
       }
     ];
@@ -145,7 +157,7 @@ export class StagesComponent {
   }
   matchesSearchCriteria(stage: Stage, text: string): boolean {
     const searchFields: string[] = [
-      stage?.promo.annee.toLocaleString()
+      stage?.annee.toLocaleString()
     ];
     return searchFields.some(field => field.includes(text.toLowerCase()));
   }

@@ -20,8 +20,8 @@ export class StageService {
   }
 
   //update stage
-  public updateStage(stagiaire: Stage): Observable<Stage>{
-      return this.http.put<Stage>(`${this.apiServerUrl}/stage/update`, stagiaire);
+  public updateStage(stage: Stage): Observable<Stage>{
+      return this.http.put<Stage>(`${this.apiServerUrl}/stage/update`, stage);
   }
 
   //delete stage
