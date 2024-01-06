@@ -17,6 +17,7 @@ export class StagesComponent {
   filteredListeStages: Stage[] = [];
   selectedStage: Stage = new Stage();
   editedStage: Stage = new Stage();
+  deletedStage: Stage = new Stage();
 
   //tabs
   editStageModal_ActiveTab: string = '';
@@ -31,12 +32,14 @@ export class StagesComponent {
     private stageService: StageService){}
 
   ngOnInit(){
+    this.getStages();
     // this.currentUser = JSON.parse(localStorage.getItem('currentUser')|| '{}');
     // this.getCurrentUser();
+  }
     
     //test
-    this.ListeStages = [
-      {
+    // this.ListeStages = [
+      /*
         id: 1,
         annee: 2024,
         etudiant:{
@@ -78,15 +81,19 @@ export class StagesComponent {
       }
     ];
     this.filteredListeStages = this.ListeStages;
-  }
+  */
   //============================================== managing variables ==============================================
-
+  
   assignSelectedStage(stage: Stage){
     this.selectedStage = stage;
   }
 
   assignEditedStage(){
     this.editedStage = {...this.selectedStage};
+  }
+
+  assignDeletedStage(){
+    this.deletedStage = {...this.selectedStage};
   }
 
   //============================================== get all stages ==============================================
@@ -129,6 +136,18 @@ export class StagesComponent {
     );
   }
 
+  //============================================== delete stage ============================================== 
+
+deleteStageForm(){
+  this.stageService.deleteStage(this.deletedStage.id).subscribe(
+    data => {
+      console.log(data);
+      window.location.reload();
+    },
+    error => console.log(error)
+  );
+}
+
   //============================================== download stagiaire cv ============================================== 
 
   // downloadStagiaireCv(stagiaireCv : FileData){
@@ -163,7 +182,7 @@ export class StagesComponent {
   }
   matchesSearchCriteria(stage: Stage, text: string): boolean {
     const searchFields: string[] = [
-      stage?.annee.toLocaleString()
+      stage?.annee_stage.toLocaleString()
     ];
     return searchFields.some(field => field.includes(text.toLowerCase()));
   }

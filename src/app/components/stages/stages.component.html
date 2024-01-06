@@ -28,22 +28,20 @@
                     <th>Tuteur</th>
                     <th>Entreprise</th>
                     <th>Type</th>
-                    <th>Annee</th>
                     <th>Compte rendu</th>
-                    <th></th>
+                    
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor = "let stage of filteredListeStages" class="info-row"> 
                     
-                    <td>{{stage.annee}}</td>
+                    <td>{{stage.annee_stage}}</td>
                     <td>{{stage.etudiant.nom}} {{stage.etudiant.prenom}}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{stage.prof.nom}} {{stage.prof.prenom}}</td>
+                    <td>{{stage.tuteur.nom}} {{stage.tuteur.prenom}}</td>
+                    <td>{{stage.entreprise.raison_social}}</td>
+                    <td>{{stage.type.code}}</td>
+                    <td>{{stage.compte_rendu}}</td>
                     <!-- <td>{{stage.prof}}</td>
                     <td>{{stage.tuteur}}</td>
                     <td>{{stage.entreprise}}</td>
@@ -58,6 +56,12 @@
                                 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                             </svg>
                         </button>
+                        <!--delete icon-->
+                        <button type="button" class="btn delete-stage-x-btn" name="delete-stage-btn" data-bs-toggle="modal" data-bs-target="#deleteStageModal" (click)="assignSelectedStage(stage); assignDeletedStage()" style="color:rgb(107, 24, 191);" title="Supprimer stage">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                        </button>
                     </td>
                     </tr>
                 </tbody>
@@ -68,7 +72,7 @@
 </div>
 
 <!-- ======================== edit stage modal ======================== -->
-<div class="modal fade" id="editStagiaireModal" tabindex="-1" aria-labelledby="editStageModalLabel" aria-hidden="true">
+<div class="modal fade" id="editStageModal" tabindex="-1" aria-labelledby="editStageModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -78,22 +82,72 @@
         <form (ngSubmit)="editStageForm()"> 
             <div class="modal-body edit-stage-modal-body">
                     <div class="form-wrapper">
-                        <!-- <div class="input-div">
+                        <div class="input-div">
                             <div class="input-group mb-3" style="width:150px;">
                                 <div class="form-group">
-                                    <label class="label-elem" for="stagePromo_modelInput">Promo</label>
-                                    <input type="text" class="form-control input-elem" aria-label="Promo" aria-describedby="basic-addon1" id="stagePromo_modelInput" name="stagePromo" [value]="selectedStage.promo" [(ngModel)]="editedStage.promo">
+                                    <label class="label-elem" for="stageAnnee_modelInput">ANNEE</label>
+                                    <input type="text" class="form-control input-elem" aria-label="Annee" aria-describedby="basic-addon1" id="stageAnnee_modelInput" name="stageAnnee" [value]="selectedStage.annee_stage" [(ngModel)]="editedStage.annee_stage">
                                 </div>
                             </div>
-                        </div> -->
-                        <!-- <div class="input-div">
+                        </div>
+                        <div class="input-div">
                             <div class="input-group mb-3" style="width:150px;">
                                 <div class="form-group">
                                     <label class="label-elem" for="stageEtudiant_modelInput">Etudiant</label>
-                                    <input type="text" class="form-control input-elem" aria-label="Promo" aria-describedby="basic-addon1" id="stageEtudiant_modelInput" name="stageEtudiant" [value]="selectedStage.etudiant" [(ngModel)]="editedStage.etudiant">
+                                    <select class="form-control" name="etudiant" [(ngModel)]="editedStage.etudiant" ngModel>
+                                        <option *ngFor="let stage of ListeStages" [ngValue]="stage.etudiant">{{stage.etudiant.nom}} {{stage.etudiant.prenom}}</option>
+                                    </select>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
+                        <div class="input-div">
+                            <div class="input-group mb-3" style="width:150px;">
+                                <div class="form-group">
+                                    <label class="label-elem" for="stageProf_modelInput">Prof</label>
+                                    <select class="form-control" name="prof" [(ngModel)]="editedStage.prof" ngModel>
+                                        <option *ngFor="let stage of ListeStages" [ngValue]="stage.prof">{{stage.prof.nom}} {{stage.prof.prenom}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-div">
+                            <div class="input-group mb-3" style="width:150px;">
+                                <div class="form-group">
+                                    <label class="label-elem" for="stageTuteur_modelInput">Tuteur</label>
+                                    <select class="form-control" name="tuteur" [(ngModel)]="editedStage.tuteur" ngModel>
+                                        <option *ngFor="let stage of ListeStages" [ngValue]="stage.tuteur">{{stage.tuteur.nom}} {{stage.tuteur.prenom}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-div">
+                            <div class="input-group mb-3" style="width:150px;">
+                                <div class="form-group">
+                                    <label class="label-elem" for="stageEntreprise_modelInput">Entreprise</label>
+                                    <select class="form-control" name="entreprise" [(ngModel)]="editedStage.entreprise" ngModel>
+                                        <option *ngFor="let stage of ListeStages" [ngValue]="stage.entreprise">{{stage.entreprise.raison_social}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-div">
+                            <div class="input-group mb-3" style="width:150px;">
+                                <div class="form-group">
+                                    <label class="label-elem" for="stageType_modelInput">Type</label>
+                                    <select class="form-control" name="type" [(ngModel)]="editedStage.type" ngModel>
+                                        <option *ngFor="let stage of ListeStages" [ngValue]="stage.type">{{stage.type.code}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-div">
+                            <div class="input-group mb-3" style="width:150px;">
+                                <div class="form-group">
+                                    <label class="label-elem" for="stageCompteRendu_modelInput">Compte Rendu</label>
+                                    <input type="text" class="form-control input-elem" aria-label="CompteRendu" aria-describedby="basic-addon1" id="stageCompteRendu_modelInput" name="stageCompteRendu" [value]="selectedStage.compte_rendu" [(ngModel)]="editedStage.compte_rendu">
+                                </div>
+                            </div>
+                        </div>
                         <br>
                     </div>
                 </div>
@@ -102,6 +156,26 @@
                 <button type="submit" class="btn edit-stage-btn" name="edit-stage-btn" id="edit-stage-btn" data-bs-dismiss="modal">Enregistrer</button>
             </div>
         </form>
+      </div>
+    </div>
+  </div>
+  <!-- ================================================ delete stagiaire modal ================================================ -->
+<div class="modal fade" id="deleteStageModal" tabindex="-1" aria-labelledby="deleteStageModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="deleteStageModalLabel">Supprimer {{selectedStage.etudiant.nom}} {{selectedStage.etudiant.prenom}}</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div>Etes-vous sûrs de vouloir supprimer ce stage?<br><br></div>
+            <form (ngSubmit) = "deleteStageForm()"> 
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button type="submit" class="btn delete-user-btn btn-danger" name="delete-user-btn" id="delete-user-btn" data-bs-dismiss="modal">Supprimer</button>
+                  </div>
+            </form>
+        </div>
       </div>
     </div>
   </div>
