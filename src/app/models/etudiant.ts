@@ -10,5 +10,5 @@ export class Etudiant{
     sexe: string = '';
     tel: string = '';
     mention: string = '';
-    promo: Promo = new Promo()
+    promo: Promo | null = null
 }

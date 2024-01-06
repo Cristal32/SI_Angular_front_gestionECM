@@ -33,39 +33,40 @@ export class EtudiantsComponent {
     private etudiantService: EtudiantService){}
 
   ngOnInit(){
+    this.getEtudiants();
     // this.currentUser = JSON.parse(localStorage.getItem('currentUser')|| '{}');
     // this.getCurrentUser();
     
     //test
-    this.ListeEtudiants = [
-      {
-        id: 1,
-        nom: 'Atatri',
-        prenom: 'Doaa',
-        adrs: 'Kenitra',
-        dateNaissance: new Date(2002,5,1),
-        sexe: 'F',
-        tel: '0000000000',
-        mention: 'Tres bien',
-        promo: {
-          annee: 2022
-        }
-      },
-      {
-        id: 1,
-        nom: 'Braikat',
-        prenom: 'Fatima Zahra',
-        adrs: 'Casa',
-        dateNaissance: new Date(2002,6,2),
-        sexe: 'F',
-        tel: '1111111111',
-        mention: 'Tres bien',
-        promo: {
-          annee: 2022
-        }
-      }
-    ];
-    this.filteredListeEtudiants = this.ListeEtudiants;
+    // this.ListeEtudiants = [
+    //   {
+    //     id: 1,
+    //     nom: 'Atatri',
+    //     prenom: 'Doaa',
+    //     adrs: 'Kenitra',
+    //     dateNaissance: new Date(2002,5,1),
+    //     sexe: 'F',
+    //     tel: '0000000000',
+    //     mention: 'Tres bien',
+    //     promo: {
+    //       annee: 2022
+    //     }
+    //   },
+    //   {
+    //     id: 1,
+    //     nom: 'Braikat',
+    //     prenom: 'Fatima Zahra',
+    //     adrs: 'Casa',
+    //     dateNaissance: new Date(2002,6,2),
+    //     sexe: 'F',
+    //     tel: '1111111111',
+    //     mention: 'Tres bien',
+    //     promo: {
+    //       annee: 2022
+    //     }
+    //   }
+    // ];
+    // this.filteredListeEtudiants = this.ListeEtudiants;
   }
   //============================================== managing variables ==============================================
 
@@ -75,6 +76,7 @@ export class EtudiantsComponent {
 
   assignEditedEtudiant(){
     this.editedEtudiant = {...this.selectedEtudiant};
+    console.log(this.editedEtudiant)
   }
 
   //============================================== get all etudiants ==============================================
@@ -153,8 +155,7 @@ export class EtudiantsComponent {
     const searchFields: string[] = [
       etudiant?.nom.toLowerCase(),
       etudiant?.prenom.toLowerCase(),
-      etudiant?.adrs.toLowerCase(),
-      etudiant?.promo.annee.toString()
+      etudiant?.adrs.toLowerCase()
     ];
     return searchFields.some(field => field.includes(text.toLowerCase()));
   }

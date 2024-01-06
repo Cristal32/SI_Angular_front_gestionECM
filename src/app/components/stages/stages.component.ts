@@ -49,7 +49,10 @@ export class StagesComponent {
           tel: '0000000000',
           mention: 'Tres bien',
           promo: {
-            annee: 2022
+            id: 2022,
+            nbrRecus: 100,
+            nbrInscrits: 200,
+            dirigeant: null
           }
         }
       },
@@ -66,7 +69,10 @@ export class StagesComponent {
           tel: '1111111111',
           mention: 'Tres bien',
           promo: {
-            annee: 2022
+            id: 2021,
+            nbrInscrits: 300,
+            nbrRecus: 24,
+            dirigeant: null
           }
         }
       }

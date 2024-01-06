@@ -43,7 +43,7 @@
                     <td>{{etudiant.sexe}}</td>
                     <td>{{etudiant.tel}}</td>
                     <td>{{etudiant.mention}}</td>
-                    <td>{{etudiant.promo.annee}}</td>
+                    <td>{{etudiant.promo?.id}}</td>
                     <td>
                         <!--edit icon-->
                         <button type="button" class="btn edit-etudiant-pen-btn" name="edit-etudiant-btn" data-bs-toggle="modal" data-bs-target="#editEtudiantModal" (click)="assignSelectedEtudiant(etudiant); assignEditedEtudiant()" style="color:rgb(107, 24, 191);" title="Editer etudiant">
@@ -89,6 +89,22 @@
                             </div>
                         </div>
                         <br>
+                        <div class="input-div">
+                            <div class="input-group mb-3" style="width:150px;">
+                                <div class="form-group">
+                                    <label class="label-elem" for="etudiantDateNaissance_modelInput">Date de naissance</label>
+                                    <input type="date" class="form-control input-elem" aria-label="dateNaissance" aria-describedby="basic-addon1" id="etudiantDateNaissance_modelInput" name="etudiantDateNaissance" [value]="selectedEtudiant.dateNaissance" [(ngModel)]="editedEtudiant.dateNaissance">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-div">
+                            <div class="input-group mb-3" style="width:150px;">
+                                <div class="form-group">
+                                    <label class="label-elem" for="etudiantTel_modelInput">Tel</label>
+                                    <input type="text" class="form-control input-elem" aria-label="Tel" aria-describedby="basic-addon1" id="etudiantTel_modelInput" name="etudiantTel" [value]="selectedEtudiant.tel" [(ngModel)]="editedEtudiant.tel">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             <div class="modal-footer">
