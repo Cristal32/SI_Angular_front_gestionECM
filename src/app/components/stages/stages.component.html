@@ -28,7 +28,7 @@
                     <th>Tuteur</th>
                     <th>Entreprise</th>
                     <th>Type</th>
-                    <th>Annee</th>
+                    <th>Statut</th>
                     <th>Compte rendu</th>
                     <th></th>
                     </tr>
@@ -38,12 +38,11 @@
                     
                     <td>{{stage.annee}}</td>
                     <td>{{stage.etudiant.nom}} {{stage.etudiant.prenom}}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{stage.prof.nom}} {{stage.prof.prenom}}</td>
+                    <td>{{stage.tuteur.nom}} {{stage.tuteur.prenom}}</td>
+                    <td>{{stage.entreprise.siret}}</td>
+                    <td>{{stage.type.code}}</td>
+                    <td>{{stage.statut}}</td>
                     <!-- <td>{{stage.prof}}</td>
                     <td>{{stage.tuteur}}</td>
                     <td>{{stage.entreprise}}</td>

@@ -33,51 +33,51 @@ export class StagesComponent {
   ngOnInit(){
     // this.currentUser = JSON.parse(localStorage.getItem('currentUser')|| '{}');
     // this.getCurrentUser();
-    
+    this.getStages();
     //test
-    this.ListeStages = [
-      {
-        id: 1,
-        annee: 2024,
-        etudiant:{
-          id: 1,
-          nom: 'Atatri',
-          prenom: 'Doaa',
-          adrs: 'Kenitra',
-          dateNaissance: new Date(2002,5,1),
-          sexe: 'F',
-          tel: '0000000000',
-          mention: 'Tres bien',
-          promo: {
-            id: 2022,
-            nbrRecus: 100,
-            nbrInscrits: 200,
-            dirigeant: null
-          }
-        }
-      },
-      {
-        id: 2,
-        annee: 2024,
-        etudiant:{
-          id: 1,
-          nom: 'Braikat',
-          prenom: 'Fatima Zahra',
-          adrs: 'Casa',
-          dateNaissance: new Date(2002,6,2),
-          sexe: 'F',
-          tel: '1111111111',
-          mention: 'Tres bien',
-          promo: {
-            id: 2021,
-            nbrInscrits: 300,
-            nbrRecus: 24,
-            dirigeant: null
-          }
-        }
-      }
-    ];
-    this.filteredListeStages = this.ListeStages;
+    // this.ListeStages = [
+    //   {
+    //     id: 1,
+    //     annee: 2024,
+    //     etudiant:{
+    //       id: 1,
+    //       nom: 'Atatri',
+    //       prenom: 'Doaa',
+    //       adrs: 'Kenitra',
+    //       dateNaissance: new Date(2002,5,1),
+    //       sexe: 'F',
+    //       tel: '0000000000',
+    //       mention: 'Tres bien',
+    //       promo: {
+    //         id: 2022,
+    //         nbrRecus: 100,
+    //         nbrInscrits: 200,
+    //         dirigeant: null
+    //       }
+    //     }
+    //   },
+    //   {
+    //     id: 2,
+    //     annee: 2024,
+    //     etudiant:{
+    //       id: 1,
+    //       nom: 'Braikat',
+    //       prenom: 'Fatima Zahra',
+    //       adrs: 'Casa',
+    //       dateNaissance: new Date(2002,6,2),
+    //       sexe: 'F',
+    //       tel: '1111111111',
+    //       mention: 'Tres bien',
+    //       promo: {
+    //         id: 2021,
+    //         nbrInscrits: 300,
+    //         nbrRecus: 24,
+    //         dirigeant: null
+    //       }
+    //     }
+    //   }
+    // ];
+    // this.filteredListeStages = this.ListeStages;
   }
   //============================================== managing variables ==============================================
 
