@@ -3,6 +3,6 @@ import { Promo } from "./promo";
 
 export class Stage{
     id: number = 0;
-    promo: Promo = new Promo();
+    annee: number = 0;
     etudiant: Etudiant = new Etudiant();
 }
