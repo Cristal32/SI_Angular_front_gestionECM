@@ -13,6 +13,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { EtudiantsComponent } from './components/etudiants/etudiants.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { StagesComponent } from './components/stages/stages.component';
+import { CandidatsComponent } from './components/candidats/candidats.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { StagesComponent } from './components/stages/stages.component';
     SidebarComponent,
     EtudiantsComponent,
     DashboardComponent,
-    StagesComponent
+    StagesComponent,
+    CandidatsComponent
   ],
   imports: [
     BrowserModule,

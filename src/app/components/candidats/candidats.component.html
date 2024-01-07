@@ -1,10 +1,10 @@
 <div class="card"> 
-    <div class="card-header"><strong style="color:rgb(107, 24, 191);">Etudiants</strong></div>
+    <div class="card-header"><strong style="color:rgb(107, 24, 191);">Candidats</strong></div>
     <div class="card-body">
         <!-----------------------searchbar---------------------------------------------------------------------->
         <div class="input-group mb-3 search-container">
-            <input type="text" class="form-control" placeholder="Chercher un etudiant" aria-label="Recipient's stage" aria-describedby="basic-addon2" id="search-input" (keyup.enter)="filterResults(filter.value)" #filter>
-            <div class="input-group-append" (click)="resetFilteredList(filter)">
+            <input type="text" class="form-control" placeholder="Chercher un etudiant" aria-label="Recipient's stage" aria-describedby="basic-addon2" id="search-input" >
+            <div class="input-group-append">
                 <span class="input-group-btn" id="basic-addon2">
                     <button class="search-btn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16" style="color:rgb(107, 24, 191);">
@@ -14,45 +14,58 @@
                 </span>
             </div>
         </div>
-        <!-----------------------liste etudiants---------------------------------------------------------------------->
-        <div class="card list-etudiants custom-card">
+        <!-----------------------liste candidats---------------------------------------------------------------------->
+        <div class="card list-candidats custom-card">
             <div class="card-header" style="height: 30px;">
             </div>
             <div class="card-body custom-card-body">
-                <table class="table table-striped table-hover custom-table" id="etudiants-table">
+                <table class="table table-striped table-hover custom-table" id="candidats-table">
                 <thead>
                     <tr>
                     <th>Nom</th>
                     <th>Prenom</th>
-                    <th>Adresse</th>
-                    <th>Date de naissance</th>
+                    <th>Email</th>
                     <th>Sexe</th>
-                    <th>Tel</th>
-                    <th>Mention</th>
-                    <th>Promo</th>
-                    <th></th>
+                    <th>Date de naissance</th>
+                    <th>Dossier</th>
+                    <th>Statut</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor = "let etudiant of filteredListeEtudiants" class="info-row"> 
+                    <tr *ngFor = "let candidat of filteredListeCandidats" class="info-row"> 
                     
-                    <td>{{etudiant.nom}}</td>
-                    <td>{{etudiant.prenom}}</td>
-                    <td>{{etudiant.adrs}}</td>
-                    <td>{{etudiant.dateNaissance | date: 'dd/MM/yyyy'}}</td>
-                    <td>{{etudiant.sexe}}</td>
-                    <td>{{etudiant.tel}}</td>
-                    <td>{{etudiant.mention}}</td>
-                    <td>{{etudiant.promo?.annee}}</td>
+                    <td>{{candidat.nom}}</td>
+                    <td>{{candidat.prenom}}</td>
+                    <td>{{candidat.email}}</td>
+                    <td>{{candidat.sexe}}</td>
+                    <td>{{candidat.dateNaissance | date: 'dd/MM/yyyy'}}</td>
                     <td>
+                        <span *ngIf="candidat.dossier">
+                            <button class="button-custom-style" title="Télécharger le dossier du candidat" (click)="downloadCandidatFile(candidat.dossier)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                    <path d="M0.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                    <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                                </svg>
+                                <span>{{ candidat.dossier.fileName }}</span>
+                            </button>
+                        </span>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-success" (click)="validerCandidat(candidat)"><i class="fa fa-check" aria-hidden="true"></i>Valider</button>
+                        <span style="margin-left: 5px;"></span>
+                        <button type="button" class="btn btn-primary">En attente</button>
+                        <span style="margin-left: 5px;"></span>
+                        <button type="button" class="btn btn-danger" (click)="refuserCandidat(candidat)"><i class="fa fa-trash" aria-hidden="true"></i> Refuser</button>
+                    </td>
+                    <!-- <td> -->
                         <!--edit icon-->
-                        <button type="button" class="btn edit-etudiant-pen-btn" name="edit-etudiant-btn" data-bs-toggle="modal" data-bs-target="#editEtudiantModal" (click)="assignSelectedEtudiant(etudiant); assignEditedEtudiant()" style="color:rgb(107, 24, 191);" title="Editer etudiant">
+                        <!-- <button type="button" class="btn edit-etudiant-pen-btn" name="edit-etudiant-btn" data-bs-toggle="modal" data-bs-target="#editEtudiantModal" style="color:rgb(107, 24, 191);" title="Editer etudiant">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                                 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                             </svg>
                         </button>
-                    </td>
+                    </td> -->
                     </tr>
                 </tbody>
                 </table>
@@ -61,7 +74,7 @@
     </div>
 </div>
 
-<!-- ======================== edit etudiant modal ======================== -->
+<!-- ======================== edit etudiant modal ========================
 <div class="modal fade" id="editEtudiantModal" tabindex="-1" aria-labelledby="editEtudiantModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
@@ -69,14 +82,14 @@
           <h1 class="modal-title fs-5" id="editEtudiantModalLabel">Editer stage</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form (ngSubmit)="editEtudiantForm()"> 
+        <form> 
             <div class="modal-body edit-stage-modal-body">
                     <div class="form-wrapper">
                         <div class="input-div">
                             <div class="input-group mb-3" style="width:150px;">
                                 <div class="form-group">
                                     <label class="label-elem" for="etudiantNom_modelInput">Nom</label>
-                                    <input type="text" class="form-control input-elem" aria-label="Nom" aria-describedby="basic-addon1" id="etudiantNom_modelInput" name="etudiantNom" [value]="selectedEtudiant.nom" [(ngModel)]="editedEtudiant.nom">
+                                    <input type="text" class="form-control input-elem" aria-label="Nom" aria-describedby="basic-addon1" id="etudiantNom_modelInput" name="etudiantNom" >
                                 </div>
                             </div>
                         </div>
@@ -84,7 +97,7 @@
                             <div class="input-group mb-3" style="width:150px;">
                                 <div class="form-group">
                                     <label class="label-elem" for="etudiantPrenom_modelInput">Prenom</label>
-                                    <input type="text" class="form-control input-elem" aria-label="Nom" aria-describedby="basic-addon1" id="etudiantPrenom_modelInput" name="etudiantPrenom" [value]="selectedEtudiant.prenom" [(ngModel)]="editedEtudiant.prenom">
+                                    <input type="text" class="form-control input-elem" aria-label="Nom" aria-describedby="basic-addon1" id="etudiantPrenom_modelInput" name="etudiantPrenom" >
                                 </div>
                             </div>
                         </div>
@@ -93,7 +106,7 @@
                             <div class="input-group mb-3" style="width:150px;">
                                 <div class="form-group">
                                     <label class="label-elem" for="etudiantDateNaissance_modelInput">Date de naissance</label>
-                                    <input type="date" class="form-control input-elem" aria-label="dateNaissance" aria-describedby="basic-addon1" id="etudiantDateNaissance_modelInput" name="etudiantDateNaissance" [value]="selectedEtudiant.dateNaissance" [(ngModel)]="editedEtudiant.dateNaissance">
+                                    <input type="date" class="form-control input-elem" aria-label="dateNaissance" aria-describedby="basic-addon1" id="etudiantDateNaissance_modelInput" name="etudiantDateNaissance" >
                                 </div>
                             </div>
                         </div>
@@ -114,4 +127,4 @@
         </form>
       </div>
     </div>
-  </div>
+  </div> -->

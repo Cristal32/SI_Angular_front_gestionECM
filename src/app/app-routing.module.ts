@@ -6,6 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { EtudiantsComponent } from './components/etudiants/etudiants.component';
 import { StagesComponent } from './components/stages/stages.component';
+import { CandidatsComponent } from './components/candidats/candidats.component';
 
 const routes: Routes = [
   {path:'', redirectTo: 'accueil', pathMatch: 'full'},
@@ -18,7 +19,8 @@ const routes: Routes = [
     children:[
       {path: '', redirectTo: 'stages', pathMatch: 'full'},
       {path:'etudiants', component: EtudiantsComponent},
-      {path:'stages', component: StagesComponent}
+      {path:'stages', component: StagesComponent},
+      {path:'candidats', component: CandidatsComponent}
     ]
   }
 ];
