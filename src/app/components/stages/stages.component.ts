@@ -17,6 +17,7 @@ export class StagesComponent {
   filteredListeStages: Stage[] = [];
   selectedStage: Stage = new Stage();
   editedStage: Stage = new Stage();
+  deletedStage: Stage = new Stage();
 
   //tabs
   editStageModal_ActiveTab: string = '';
@@ -31,12 +32,14 @@ export class StagesComponent {
     private stageService: StageService){}
 
   ngOnInit(){
+    this.getStages();
     // this.currentUser = JSON.parse(localStorage.getItem('currentUser')|| '{}');
     // this.getCurrentUser();
+  }
     
     //test
-    this.ListeStages = [
-      {
+    // this.ListeStages = [
+      /*
         id: 1,
         annee: 2024,
         etudiant:{
@@ -78,15 +81,19 @@ export class StagesComponent {
       }
     ];
     this.filteredListeStages = this.ListeStages;
-  }
+  */
   //============================================== managing variables ==============================================
-
+  
   assignSelectedStage(stage: Stage){
     this.selectedStage = stage;
   }
 
   assignEditedStage(){
     this.editedStage = {...this.selectedStage};
+  }
+
+  assignDeletedStage(){
+    this.deletedStage = {...this.selectedStage};
   }
 
   //============================================== get all stages ==============================================
@@ -96,7 +103,7 @@ export class StagesComponent {
       data => {
        this.ListeStages = data;
        this.filteredListeStages = [...this.ListeStages];
-       //console.log(data);
+       console.log(data);
       },
       (error: HttpErrorResponse) => {
         console.log(error)
@@ -120,14 +127,28 @@ export class StagesComponent {
   //============================================== update stage ============================================== 
   
   editStageForm(){
-    this.stageService.updateStage(this.editedStage).subscribe(
-      data => {
-        console.log(data);
-        window.location.reload();
-      },
-      error => console.log(error)
-    );
+    console.log(this.selectedStage);
+    console.log(this.editedStage);
+    // this.stageService.updateStage(this.editedStage).subscribe(
+    //   data => {
+    //     console.log(data);
+    //     window.location.reload();
+    //   },
+    //   error => console.log(error)
+    // );
   }
+
+  //============================================== delete stage ============================================== 
+
+deleteStageForm(){
+  this.stageService.deleteStage(this.deletedStage.id).subscribe(
+    data => {
+      console.log(data);
+      window.location.reload();
+    },
+    error => console.log(error)
+  );
+}
 
   //============================================== download stagiaire cv ============================================== 
 
