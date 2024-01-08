@@ -1,4 +1,4 @@
-.add-etudiant-btn,.edit-btn,.edit-etudiant-btn{
+.add-etudiant-btn,.edit-btn,.edit-candidat-btn{
     background-color: rgb(132, 55, 180);
     color: white;
 }
@@ -14,7 +14,7 @@
     border: 1px solid #ccc;
     overflow: hidden; /* Cache le contenu qui dépasse */
 }
-.custom-card-etudiants{
+.custom-card-candidats{
     /* padding: 10px; */
     overflow: auto; /* Affiche la barre de défilement en cas de dépassement */
     height: 100%; /* Remplissage total de la hauteur disponible */
@@ -34,10 +34,10 @@ padding: 8px;
 text-align: left;
 }
 /* ============================================================================== */
-.create-etudiant-btn,.etudiants-div{
+.create-candidat-btn,.candidats-div{
     display: inline-block;
 }
-.create-etudiant-btn{
+.create-candidat-btn{
     float: right;
     border: none;
     background-color: white;
@@ -71,7 +71,7 @@ text-align: left;
     margin-top: 7px;
     margin-left: 9px;
 }
-.list-etudiants{
+.list-candidats{
     margin-bottom: 15px;
 }
 
@@ -81,7 +81,7 @@ text-align: left;
     padding: 10px; 
     margin-bottom: 10px;
 }
-.edit-etudiant-modal-body {
+.edit-candidat-modal-body {
     display: flex;
     flex-direction: column;
     align-items: center;
