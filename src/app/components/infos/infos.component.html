@@ -1,0 +1,65 @@
+<div class="card"> 
+    <div class="card-header"><strong style="color:rgb(107, 24, 191);"> Editer vos informations personnels.</strong></div>
+    <div class="card-body">
+        <div class="card list-stages custom-card">
+            <div class="card-header" style="height: 30px;"></div>
+            <div class="card-body custom-card-body">
+                <form (ngSubmit)="editEtudiantForm()"> 
+                    <div class="modal-body edit-stage-modal-body">
+                <div class="form-wrapper">
+                    <div class="input-div">
+                        <div class="input-group mb-3" style="width:150px;">
+                            <div class="form-group">
+                                <label class="label-elem" for="etudiantNom_modelInput">Nom</label>
+                                <input type="text" class="form-control input-elem" aria-label="Nom" aria-describedby="basic-addon1" id="etudiantNom_modelInput" name="etudiantNom" [value]="selectedEtudiant.nom" [(ngModel)]="editedEtudiant.nom">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-div">
+                        <div class="input-group mb-3" style="width:150px;">
+                            <div class="form-group">
+                                <label class="label-elem" for="etudiantPrenom_modelInput">Prenom</label>
+                                <input type="text" class="form-control input-elem" aria-label="Nom" aria-describedby="basic-addon1" id="etudiantPrenom_modelInput" name="etudiantPrenom" [value]="selectedEtudiant.prenom" [(ngModel)]="editedEtudiant.prenom">
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="input-div">
+                        <div class="input-group mb-3" style="width:150px;">
+                            <div class="form-group">
+                                <label class="label-elem" for="etudiantDateNaissance_modelInput">Date de naissance</label>
+                                <input type="date" class="form-control input-elem" aria-label="dateNaissance" aria-describedby="basic-addon1" id="etudiantDateNaissance_modelInput" name="etudiantDateNaissance" [value]="selectedEtudiant.dateNaissance" [(ngModel)]="editedEtudiant.dateNaissance">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-div">
+                        <div class="input-group mb-3" style="width:150px;">
+                            <div class="form-group">
+                                <label class="label-elem" for="etudiantMention_modelInput">Mention</label>
+                                <input type="text" class="form-control input-elem" aria-label="Mention" aria-describedby="basic-addon1" id="etudiantMention_modelInput" name="etudiantMention" [value]="selectedEtudiant.mention" [(ngModel)]="editedEtudiant.mention">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-div">
+                        <div class="input-group mb-3" style="width:400px;">
+                            <div class="form-group">
+                                <label class="label-elem" for="etudiantAdrs_modelInput">Adresse</label>
+                                <input type="text" class="form-control input-elem" aria-label="Adresse" aria-describedby="basic-addon1" id="etudiantAdrs_modelInput" name="etudiantAdrs" [value]="selectedEtudiant.adrs" [(ngModel)]="editedEtudiant.adrs">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="etudiantSexe_modelInput">Sexe</label>
+                        <select id="inputSexe" class="form-control" aria-label="Sexe" aria-describedby="basic-addon1" id="etudiantSexe_modelInput" name="etudiantSexe" [value]="selectedEtudiant.sexe" [(ngModel)]="editedEtudiant.sexe">
+                          <option selected>Choose...</option>
+                          <option>F</option>
+                          <option>M</option>
+                        </select>
+                      </div>
+                </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -6,5 +6,6 @@ export class Candidat {
     prenom : string = '';
     dateNaissance: Date = new Date();
     sexe : string = '';
+    statut : string = '';
     dossier: FileData | null = null
 }

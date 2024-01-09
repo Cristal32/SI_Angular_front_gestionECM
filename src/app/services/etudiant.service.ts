@@ -11,8 +11,14 @@ export class EtudiantService {
 
   constructor(private http: HttpClient) { }
 
+  // get all etudiants
   public getEtudiants(): Observable<Etudiant[]>{
     return this.http.get<Etudiant[]>(`${this.apiServerUrl}/etudiant/getAll`);
+  }
+
+  // get etudiant by id
+  getEtudiantById(etudiantId: number): Observable<Etudiant> {
+    return this.http.get<Etudiant>(`${this.apiServerUrl}/etudiant/get/${etudiantId}`);
   }
 
   //add etudiant

@@ -94,32 +94,69 @@ export class CandidatsComponent implements OnInit{
   }
 
   refuserCandidat(candidat : Candidat){
-    const candidatEmail = candidat.email;
-    this.candidatService.deleteCandidat(candidatEmail).subscribe(() => {
-      this.getCandidats();
-    });
+    candidat.statut = 'Refused';
+    this.candidatService.updateCandidat(candidat).subscribe(
+      (updatedCandidat) => {
+        console.log('Candidat refusé avec succès:', updatedCandidat);
+        
+        // Remove the refused candidate from the displayed list
+        this.listeCandidats = this.listeCandidats.filter(
+        (c) => c.email !== updatedCandidat.email
+        );
+
+        // Create a copy of the filtered list to update the displayed list
+        this.filteredListeCandidats = [...this.listeCandidats];
+      },
+      (error: HttpErrorResponse) => {
+        console.error('Erreur lors du refus du candidat:', error);
+        // Handle the error accordingly
+      }
+    );
+    
   }
 
   validerCandidat(candidat : Candidat){
-    // Construisez l'objet Etudiant à partir des données du Candidat
-    const etudiant : Etudiant = {
-      nom : candidat.nom,
-      prenom : candidat.prenom,
-      dateNaissance : candidat.dateNaissance,
-      sexe : candidat.sexe,
-      adrs: '',
-      tel: '',
-      mention: '',
-      promo: null
-    };
-    this.etudiantService.addEtudiant(etudiant).subscribe(
-      (etudiantAjoute) => {
-        console.log('Étudiant ajouté avec succès:', etudiantAjoute);
-        // Vous pouvez également mettre à jour la liste des candidats ou effectuer d'autres actions ici
+    candidat.statut = 'Accepted';
+    this.candidatService.updateCandidat(candidat).subscribe(
+      (updatedCandidat) => {
+        console.log('Candidat accepté avec succès:', updatedCandidat);
+        
+        // Ajout de l'etudiant
+        const etudiant : Etudiant = {
+          id : 0,
+          nom : candidat.nom,
+          prenom : candidat.prenom,
+          dateNaissance : candidat.dateNaissance,
+          sexe : candidat.sexe,
+          adrs: '',
+          tel: '',
+          mention: '',
+          promo: null
+        };
+
+        this.etudiantService.addEtudiant(etudiant).subscribe(
+          (etudiantAjoute) => {
+            console.log('Étudiant ajouté avec succès:', etudiantAjoute);
+  
+            // Remove the accepted candidate from the displayed list
+            this.listeCandidats = this.listeCandidats.filter(
+              (c) => c.email !== updatedCandidat.email
+            );
+  
+            // Create a copy of the filtered list to update the displayed list
+            this.filteredListeCandidats = [...this.listeCandidats];
+  
+            // You can also update the filtered list or perform other actions here
+          },
+          (error: HttpErrorResponse) => {
+            console.error('Erreur lors de l\'ajout de l\'étudiant:', error);
+            // Handle the error accordingly
+          }
+        );
       },
       (error: HttpErrorResponse) => {
-        console.error('Erreur lors de l\'ajout de l\'étudiant:', error);
-        // Gérez l'erreur en conséquence
+        console.error('Erreur lors du refus du candidat:', error);
+        // Handle the error accordingly
       }
     );
   }

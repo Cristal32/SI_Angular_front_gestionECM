@@ -14,6 +14,9 @@ import { EtudiantsComponent } from './components/etudiants/etudiants.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { StagesComponent } from './components/stages/stages.component';
 import { CandidatsComponent } from './components/candidats/candidats.component';
+import { EtudiantComponent } from './components/etudiant/etudiant.component';
+import { MyStageComponent } from './components/my-stage/my-stage.component';
+import { InfosComponent } from './components/infos/infos.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { CandidatsComponent } from './components/candidats/candidats.component';
     EtudiantsComponent,
     DashboardComponent,
     StagesComponent,
-    CandidatsComponent
+    CandidatsComponent,
+    EtudiantComponent,
+    MyStageComponent,
+    InfosComponent
   ],
   imports: [
     BrowserModule,
