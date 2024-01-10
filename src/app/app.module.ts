@@ -13,6 +13,9 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { EtudiantsComponent } from './components/etudiants/etudiants.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { StagesComponent } from './components/stages/stages.component';
+import { EntrepriseComponent } from './components/entreprise/entreprise.component';
+import { TuteurComponent } from './components/tuteur/tuteur.component';
+import { ProfComponent } from './components/prof/prof.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { StagesComponent } from './components/stages/stages.component';
     SidebarComponent,
     EtudiantsComponent,
     DashboardComponent,
-    StagesComponent
+    StagesComponent,
+    EntrepriseComponent,
+    TuteurComponent,
+    ProfComponent
   ],
   imports: [
     BrowserModule,

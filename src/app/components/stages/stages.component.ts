@@ -2,6 +2,19 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Stage } from 'src/app/models/stage';
 import { StageService } from 'src/app/services/stage.service';
+import { EtudiantService } from 'src/app/services/etudiant.service';
+import { Etudiant } from 'src/app/models/etudiant';
+import { Type } from 'src/app/models/type';
+import { TypeService } from 'src/app/services/type.service';
+import { Prof } from 'src/app/models/prof';
+import { ProfService } from 'src/app/services/prof.service';
+import { Entreprise } from 'src/app/models/entreprise';
+import { EntrepriseService } from 'src/app/services/entreprise.service';
+import { Tuteur } from 'src/app/models/tuteur';
+import { TuteurService } from 'src/app/services/tuteur.service';
+
+
+
 // import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -14,28 +27,108 @@ export class StagesComponent {
   // currentUtilisateur: Utilisateur = new Utilisateur();
 
   ListeStages: Stage[] = [];
+  ListeEtudiants: Etudiant[] = [];
+  ListeEntreprises: Entreprise[] = [];
+  ListeTuteurs: Tuteur[] = [];
+  ListeTypes: Type[] = [];
+  ListeProfs: Prof[] = [];
   filteredListeStages: Stage[] = [];
   selectedStage: Stage = new Stage();
   editedStage: Stage = new Stage();
   deletedStage: Stage = new Stage();
+  createdStage: Stage = new Stage();
+  createdEntreprise: Entreprise = new Entreprise();
+  createdTuteur: Tuteur = new Tuteur();
+
 
   //tabs
   editStageModal_ActiveTab: string = '';
   createStageModal_ActiveTab: string = '';
   stage_activeTab: string = 'stage';
 
+  //============================================== tabs management ==============================================
+  tabBackgroundColor: string = '#f1f1f1';
+
+  setActiveCreateTab(tab: string){
+    this.createStageModal_ActiveTab = tab;
+  }
+  setActiveEditTab(tab: string){
+    this.editStageModal_ActiveTab = tab;
+  }
+
+  setActiveStageTab(tab: string){
+    this.stage_activeTab = tab;
+  }
+
+
   // constructor(
   //   private stagiaireService: StageService,
   //   private utilisateurService: UtilisateurService,
   //   private fileService: FileService){}
   constructor(
-    private stageService: StageService){}
+    private stageService: StageService,
+    private etudiantService: EtudiantService,
+    private typeService: TypeService,
+    private profService: ProfService,
+    private entrepriseService: EntrepriseService,
+    private tuteurService: TuteurService
+    ){}
+  
+  
 
   ngOnInit(){
     this.getStages();
+    this.getEtudiants();
+    this.getTypes();
+    this.getProfs();
+    this.getEntreprises();
+    this.getTuteurs();
+
     // this.currentUser = JSON.parse(localStorage.getItem('currentUser')|| '{}');
     // this.getCurrentUser();
   }
+
+  //create stagiaire form
+  form: any = {
+    annee_stage: '',
+    compte_rendu: '',
+    etudiant: null,
+    entreprise: null,
+    prof: null,
+    type: '',
+    tuteur: null,
+    statut_stage: ''
+  }
+
+  //puts the value of the create stagiaire form in the createdStagiaire variable
+  setFormInCreatedStage(){
+    this.createdStage.annee_stage = this.form.annee_stage;
+    this.createdStage.compte_rendu = this.form.compte_rendu;
+    this.createdStage.etudiant = this.form.etudiant;
+    this.createdStage.entreprise = this.form.entreprise;
+    this.createdStage.prof = this.form.prof;
+    this.createdStage.type = this.form.type;
+    this.createdStage.tuteur = this.form.tuteur;
+    this.createdStage.statut_stage = this.form.statut_stage;
+  }
+
+  
+  
+  //============================================== create stage ==============================================
+//dateValidationError: boolean = false;
+
+createStageForm(){
+  //this.dateValidationError= false;
+  this.setFormInCreatedStage();
+  console.log("createdStage: ", this.createdStage);
+  this.stageService.addStage(this.createdStage).subscribe(
+            data => {
+              console.log(data);
+              window.location.reload();
+            },
+            error => console.log(error)
+  );
+}
     
     //test
     // this.ListeStages = [
@@ -111,6 +204,75 @@ export class StagesComponent {
     );
   }
 
+
+  //============================================== get all étudiants ==============================================
+
+  public getEtudiants(): void{
+    this.etudiantService.getEtudiants().subscribe(
+      data => {
+       this.ListeEtudiants = data;
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error)
+      }
+    );
+  }
+
+  //============================================== get all types ==============================================
+
+  public getTypes(): void{
+    this.typeService.getTypes().subscribe(
+      data => {
+       this.ListeTypes = data;
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error)
+      }
+    );
+    // console.log("liste des types:", this.ListeTypes);
+  }
+
+  //============================================== get all entreprises ==============================================
+
+  public getEntreprises(): void{
+    this.entrepriseService.getEntreprises().subscribe(
+      data => {
+       this.ListeEntreprises = data;
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error)
+      }
+    );
+    // console.log("liste des types:", this.ListeTypes);
+  }
+
+  //============================================== get all entreprises ==============================================
+
+  public getTuteurs(): void{
+    this.tuteurService.getTuteurs().subscribe(
+      data => {
+       this.ListeTuteurs = data;
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error)
+      }
+    );
+    // console.log("liste des types:", this.ListeTypes);
+  }
+
+  //============================================== get all profs ==============================================
+
+  public getProfs(): void{
+    this.profService.getProfs().subscribe(
+      data => {
+       this.ListeProfs = data;
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error)
+      }
+    );
+  }
+
   //============================================== get current user ==============================================
   // getCurrentUser(){
   //   return this.utilisateurService.getUtilisateurById(this.currentUser.userId).subscribe(
@@ -148,6 +310,7 @@ deleteStageForm(){
   );
 }
 
+
   //============================================== download stagiaire cv ============================================== 
 
   // downloadStagiaireCv(stagiaireCv : FileData){
@@ -182,9 +345,22 @@ deleteStageForm(){
   }
   matchesSearchCriteria(stage: Stage, text: string): boolean {
     const searchFields: string[] = [
-      stage?.annee_stage.toLocaleString()
+      stage.annee_stage.toString(),
+      stage.etudiant.nom.toString(),
+      stage.etudiant.prenom.toString(),
+      stage.prof.nom.toString(),
+      stage.prof.prenom.toString(),
+      stage.tuteur.nom.toString(),
+      stage.tuteur.prenom.toString(),
+      stage.entreprise.raison_social.toString(),
+      stage.type.code.toString(),
+      stage.compte_rendu.toString(),
     ];
-    return searchFields.some(field => field.includes(text.toLowerCase()));
+    //console.log("searchFields.includes('Bob')",searchFields.includes('Bob'));
+    //console.log("text a chercher :",text);
+    //console.log("searchFields",searchFields );
+    //console.log("results: ",searchFields.some(field => field.includes(text.toLowerCase())))
+    return searchFields.some(field => field.includes(text));
   }
   resetFilteredList(input: HTMLInputElement) {
     this.filteredListeStages = this.ListeStages;

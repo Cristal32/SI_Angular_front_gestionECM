@@ -4,6 +4,6 @@ export class Prof{
     prenom: string = '';
     adrs: string = '';
     tel: string = '';
-    dateEmbauche: Date = new Date();
-    dateDepart: Date = new Date()
+    dateEmb: Date = new Date();
+    dateDep: Date = new Date();
 }

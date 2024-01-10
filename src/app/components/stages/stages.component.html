@@ -14,8 +14,120 @@
                 </span>
             </div>
         </div>
-        <!-----------------------liste stages---------------------------------------------------------------------->
+        <!-- ================================================ create stage modal ================================================ -->
+    <div class="modal fade" id="createStageModal" tabindex="-1" aria-labelledby="createStageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="editStageModalLabel">Nouveau stage</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form name="form" id="create-stage-form" (ngSubmit)="f.form.valid && createStageForm()" #f="ngForm" novalidate> 
+                    <div class="modal-body edit-stage-modal-body">
+                        <div class="tab-navigation">
+                            <button type="button" class="tablinks" (click)="setActiveCreateTab('personalInfoTab')"  [class.active]="createStageModal_ActiveTab === 'personalInfoTab'">Infos stage</button>
+                        </div>
+                        <!-- Infos stages -->
+                        <div class="tab-content" *ngIf="createStageModal_ActiveTab === 'personalInfoTab'">
+                            <div class="form-wrapper" style="border: 1px solid rgb(229, 216, 239); padding: 10px; margin-bottom: 10px;">
+                                <div class="input-div">
+                                    <div class="input-group mb-3" style="width:150px;">
+                                        <div class="form-group">
+                                            <label class="label-elem" for="stageAnneeStage_modelInput">Annee Stage <span style="color: red">*</span></label>
+                                            <input type="number" class="form-control input-elem" aria-label="AnneeStage" aria-describedby="basic-addon1" id="stageAnneeStage_modelInput" name="stageAnneeStage" #annee_stage="ngModel" [(ngModel)]="form.annee_stage" required>
+                                            <div *ngIf="annee_stage.errors && f.submitted" style="color: red;">
+                                            Annee Stage obligatoire!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="input-group mb-3" style="width:150px;">
+                                        <div class="form-group">
+                                            <label class="label-elem" for="stageEtudiant_modelInput">Etudiant</label>
+                                            <select class="form-control" name="etudiant" [(ngModel)]="form.etudiant" ngModel>
+                                            <option *ngFor="let etudiant of ListeEtudiants" [ngValue]="etudiant">{{etudiant.nom}} {{etudiant.prenom}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="input-div">
+                                    <div class="input-group mb-3" style="width:150px;">
+                                        <div class="form-group">
+                                            <label class="label-elem" for="stageType_modelInput">Type</label>
+                                            <select class="form-control" name="type" [(ngModel)]="form.type" ngModel>
+                                            <option *ngFor="let type of ListeTypes" [ngValue]="type">{{type.code}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="input-group mb-3" style="width:150px;">
+                                        <div class="form-group">
+                                            <label class="label-elem" for="stageProf_modelInput">Prof</label>
+                                            <select class="form-control" name="prof" [(ngModel)]="form.prof" ngModel>
+                                            <option *ngFor="let prof of ListeProfs" [ngValue]="prof">{{prof.nom}} {{prof.prenom}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="input-div">
+                                    <div class="input-group mb-3" style="width:150px;">
+                                        <div class="form-group">
+                                            <label class="label-elem" for="stageStatutStage_modelInput">Statut Stage <span style="color: red">*</span></label>
+                                            <input type="text" class="form-control input-elem" aria-label="StatutStage" aria-describedby="basic-addon1" id="stageStatutStage_modelInput" name="stageStatutStage" #statut_stage="ngModel" [(ngModel)]="form.statut_stage" required>
+                                            <div *ngIf="statut_stage.errors && f.submitted" style="color: red;">Statut Stage obligatoire!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="input-group mb-3" style="width:150px;">
+                                        <div class="form-group">
+                                            <label class="label-elem" for="stageCompteRendu_modelInput">Compte Rendu <span style="color: red">*</span></label>
+                                            <input type="text" class="form-control input-elem" aria-label="CompteRendu" aria-describedby="basic-addon1" id="stageCompteRendu_modelInput" name="stageCompteRendu" #compte_rendu="ngModel" [(ngModel)]="form.compte_rendu" required>
+                                        </div>
+                                        <div *ngIf="compte_rendu.errors && f.submitted" style="color: red;">
+                                        Compte Rendu obligatoire!
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="input-div">
+                                    <div class="input-group mb-3" style="width:150px;">
+                                        <div class="form-group">
+                                            <label class="label-elem" for="stageEntreprise_modelInput">Entreprise</label>
+                                            <select class="form-control" name="entreprise" [(ngModel)]="form.entreprise" ngModel>
+                                            <option *ngFor="let entreprise of ListeEntreprises" [ngValue]="entreprise">{{entreprise.raison_social}}</option>
+                                            </select>
+                                            <div *ngIf="statut_stage.errors && f.submitted" style="color: red;">Entreprise obligatoire!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="input-group mb-3" style="width:150px;">
+                                        <div class="form-group">
+                                            <label class="label-elem" for="stageTuteur_modelInput">Tuteur</label>
+                                            <select class="form-control" name="tuteur" [(ngModel)]="form.tuteur" ngModel>
+                                            <option *ngFor="let tuteur of ListeTuteurs" [ngValue]="tuteur">{{tuteur.nom}} {{tuteur.prenom}}</option>
+                                            </select>
+                                        </div>
+                                        <div *ngIf="compte_rendu.errors && f.submitted" style="color: red;">
+                                            Tuteur obligatoire!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                            <button type="submit" class="btn edit-stage-btn" name="edit-stage-btn" id="edit-stage-btn">Enregistrer</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-----------------------liste stages---------------------------------------------------------------------->
         <div class="card list-users custom-card">
+            <div class="card-header">
+                <!-- create user button -->
+                <button type="button" class="btn create-stage-btn" name="create-stage-btn" data-bs-toggle="modal" data-bs-target="#createStageModal" title="Créer nouveau stage">
+                    +
+                </button> 
+            </div>
             <div class="card-header" style="height: 30px;">
             </div>
             <div class="card-body custom-card-body">
@@ -68,8 +180,8 @@
                 </table>
             </div>
         </div>
-    </div>
-</div>
+    <!-- </div> -->
+<!-- </div> -->
 
 <!-- ======================== edit stage modal ======================== -->
 <div class="modal fade" id="editStageModal" tabindex="-1" aria-labelledby="editStageModalLabel" aria-hidden="true">
@@ -95,7 +207,7 @@
                                 <div class="form-group">
                                     <label class="label-elem" for="stageEtudiant_modelInput">Etudiant</label>
                                     <select class="form-control" name="etudiant" [(ngModel)]="editedStage.etudiant" ngModel>
-                                        <option *ngFor="let stage of ListeStages" [ngValue]="stage.etudiant">{{stage.etudiant.nom}} {{stage.etudiant.prenom}}</option>
+                                        <option *ngFor="let etudiant of ListeEtudiants" [ngValue]="etudiant">{{etudiant.nom}} {{etudiant.prenom}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -105,7 +217,7 @@
                                 <div class="form-group">
                                     <label class="label-elem" for="stageProf_modelInput">Prof</label>
                                     <select class="form-control" name="prof" [(ngModel)]="editedStage.prof" ngModel>
-                                        <option *ngFor="let stage of ListeStages" [ngValue]="stage.prof">{{stage.prof.nom}} {{stage.prof.prenom}}</option>
+                                        <option *ngFor="let prof of ListeProfs" [ngValue]="prof">{{prof.nom}} {{prof.prenom}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -135,7 +247,7 @@
                                 <div class="form-group">
                                     <label class="label-elem" for="stageType_modelInput">Type</label>
                                     <select class="form-control" name="type" [(ngModel)]="editedStage.type" ngModel>
-                                        <option *ngFor="let stage of ListeStages" [ngValue]="stage.type">{{stage.type.code}}</option>
+                                        <option *ngFor="let type of ListeTypes" [ngValue]="type.code">{{type.code}}</option>
                                     </select>
                                 </div>
                             </div>

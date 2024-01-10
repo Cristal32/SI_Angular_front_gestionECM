@@ -43,7 +43,7 @@
                     <td>{{etudiant.sexe}}</td>
                     <td>{{etudiant.tel}}</td>
                     <td>{{etudiant.mention}}</td>
-                    <td>{{etudiant.promo?.id}}</td>
+                    <td>{{etudiant.promo?.annee}}</td>
                     <td>
                         <!--edit icon-->
                         <button type="button" class="btn edit-etudiant-pen-btn" name="edit-etudiant-btn" data-bs-toggle="modal" data-bs-target="#editEtudiantModal" (click)="assignSelectedEtudiant(etudiant); assignEditedEtudiant()" style="color:rgb(107, 24, 191);" title="Editer etudiant">
