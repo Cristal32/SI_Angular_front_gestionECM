@@ -14,4 +14,5 @@ export class Stage{
     prof: Prof | null = null;
     typeStage: TypeStage | null = null;
     tuteur: Tuteur | null = null;
+    statut: String = ''
 }

@@ -14,6 +14,7 @@ import { EtudiantsComponent } from './components/etudiants/etudiants.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { StagesComponent } from './components/stages/stages.component';
 import { CandidatsComponent } from './components/candidats/candidats.component';
+import { EntrepriseComponent } from './components/entreprise/entreprise.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CandidatsComponent } from './components/candidats/candidats.component';
     EtudiantsComponent,
     DashboardComponent,
     StagesComponent,
-    CandidatsComponent
+    CandidatsComponent,
+    EntrepriseComponent
   ],
   imports: [
     BrowserModule,
