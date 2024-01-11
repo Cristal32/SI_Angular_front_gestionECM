@@ -27,7 +27,7 @@ export class TuteurService {
 }
 
 //delete tuteur
-public deleteTuteur(tuteurId: string): Observable<void>{
+public deleteTuteur(tuteurId: number): Observable<void>{
   return this.http.delete<void>(`${this.apiServerUrl}/tuteur/delete/${tuteurId}`);
 }
 }

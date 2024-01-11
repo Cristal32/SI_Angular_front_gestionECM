@@ -6,7 +6,7 @@ export class Etudiant{
     nom: string = '';
     prenom: string = '';
     adrs: string = '';
-    dateNaissance: Date = new Date();
+    dateNaissance: Date | null = null;
     sexe: string = '';
     tel: string = '';
     mention: string = '';

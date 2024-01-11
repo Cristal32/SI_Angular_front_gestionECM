@@ -15,85 +15,6 @@
             </div>
         </div>
 
-        <!---===================== create stage modal ====----------------------------->
-
-    <div class="modal fade" id="createEntrepriseModal" tabindex="-1" aria-labelledby="createEntrepriseModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="editEntrepriseModalLabel">Nouvel Entreprise</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form name="form" id="create-entreprise-form" (ngSubmit)="f.form.valid && createEntrepriseForm()" #f="ngForm" novalidate> 
-                    <div class="modal-body edit-entreprise-modal-body">
-                        <div class="tab-navigation">
-                            <button type="button" class="tablinks" (click)="setActiveCreateTab('entrepriseInfoTab')" [class.active]="createEntrepriseModal_ActiveTab === 'entrepriseInfoTab'">Entreprise</button>
-                            </div>
-                        <!-- Entreprise infos -->
-                        <div class="tab-content" *ngIf="createEntrepriseModal_ActiveTab === 'entrepriseInfoTab'">
-                            <div class="form-wrapper">
-                                <div class="input-div" >
-                                    <div class="input-group mb-3" style="width:150px;">
-                                        <div class="form-group">
-                                            <label class="label-elem" for="EntrepriseSiret_modelInput">Siret <span style="color: red">*</span></label>
-                                            <input type="text" class="form-control input-elem" aria-label="EntrepriseSiret" aria-describedby="basic-addon1" id="EntrepriseSiret_modelInput" name="EntrepriseSiret" #siret="ngModel" [(ngModel)]="form.siret" required>
-                                        </div>
-                                    </div>
-                                    <div class="input-group mb-3" style="width:150px;">
-                                        <div class="form-group">
-                                            <label class="label-elem" for="EntrepriseRaisonSocial_modelInput">Raison Sociale <span style="color: red">*</span></label>
-                                            <input type="text" class="form-control input-elem" aria-label="RaisonSocial" aria-describedby="basic-addon1" id="EntrepriseRaisonSocial_modelInput" name="EntrepriseRaisonSocial" #raison_social="ngModel" [(ngModel)]="form.raison_social" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="input-div">
-                                    <div class="input-group mb-3" style="width:150px;">
-                                        <div class="form-group">
-                                            <label class="label-elem" for="entrepriseFormeJuridique">Forme Juridique <span style="color: red">*</span></label>
-                                            <input type="text" class="form-control input-elem" aria-label="FormeJuridique" aria-describedby="basic-addon1" id="entrepriseFormeJuridique_modelInput" name="entrepriseFormeJuridique" #forme_juridique="ngModel" [(ngModel)]="form.forme_juridique" required>
-                                        </div>
-                                    </div>
-                                    <div class="input-group mb-3" style="width:150px;">
-                                        <div class="form-group">
-                                            <label class="label-elem" for="entrepriseAdresseEntreprise">Adresse Entreprise <span style="color: red">*</span></label>
-                                            <input type="text" class="form-control input-elem" aria-label="AdresseEntreprise" aria-describedby="basic-addon1" id="entrepriseAdresseEntreprise_modelInput" name="entrepriseAdresseEntreprise" #adrs_entreprise="ngModel" [(ngModel)]="form.adrs_entreprise" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="input-div">
-                                    <div class="input-group mb-3" style="width:150px;">
-                                        <div class="form-group">
-                                            <label class="label-elem" for="entrepriseTelStandard">Tel Standard <span style="color: red">*</span></label>
-                                            <input type="text" class="form-control input-elem" aria-label="Tel Standard" aria-describedby="basic-addon1" id="entrepriseTelStandard_modelInput" name="entrepriseTelStandard" #tel_standard="ngModel" [(ngModel)]="form.tel_standard" required>
-                                        </div>
-                                    </div>
-                                    <div class="input-group mb-3" style="width:150px;">
-                                        <div class="form-group">
-                                            <label class="label-elem" for="entrepriseContact">Contact <span style="color: red">*</span></label>
-                                            <input type="text" class="form-control input-elem" aria-label="Contact" aria-describedby="basic-addon1" id="entrepriseContact_modelInput" name="entrepriseContact" #contact="ngModel" [(ngModel)]="form.contact" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="input-div">
-                                    <div class="input-group mb-3" style="width:150px;">
-                                        <div class="form-group">
-                                            <label class="label-elem" for="entrepriseTelContact">Tel Contact <span style="color: red">*</span></label>
-                                            <input type="text" class="form-control input-elem" aria-label="TelContact" aria-describedby="basic-addon1" id="entrepriseTelContact_modelInput" name="entrepriseTelContact" #tel_contact="ngModel" [(ngModel)]="form.tel_contact" required>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>   
-                        </div> 
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                            <button type="submit" class="btn edit-entreprise-btn" name="edit-entreprise-btn" id="edit-entreprise-btn">Enregistrer</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
         <!-----------------------liste entreprises---------------------------------->
 
         <div class="card list-entreprises custom-card">
@@ -147,6 +68,81 @@
                 </tbody>
                 </table>
             </div>
+        </div>
+    </div>
+</div>
+
+<!---===================== create entreprise modal ====----------------------------->
+
+<div class="modal fade" id="createEntrepriseModal" tabindex="-1" aria-labelledby="createEntrepriseModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="editEntrepriseModalLabel">Nouvel Entreprise</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form name="form" id="create-entreprise-form" (ngSubmit)="f.form.valid && createEntrepriseForm()" #f="ngForm" novalidate> 
+                <div class="modal-body edit-entreprise-modal-body">
+                    <!-- Entreprise infos -->
+                        <div class="form-wrapper">
+                            <div class="input-div" >
+                                <div class="input-group mb-3" style="width:150px;">
+                                    <div class="form-group">
+                                        <label class="label-elem" for="EntrepriseSiret_modelInput">Siret <span style="color: red">*</span></label>
+                                        <input type="text" class="form-control input-elem" aria-label="EntrepriseSiret" aria-describedby="basic-addon1" id="EntrepriseSiret_modelInput" name="EntrepriseSiret" #siret="ngModel" [(ngModel)]="form.siret" required>
+                                    </div>
+                                </div>
+                                <div class="input-group mb-3" style="width:150px;">
+                                    <div class="form-group">
+                                        <label class="label-elem" for="EntrepriseRaisonSocial_modelInput">Raison Sociale <span style="color: red">*</span></label>
+                                        <input type="text" class="form-control input-elem" aria-label="RaisonSocial" aria-describedby="basic-addon1" id="EntrepriseRaisonSocial_modelInput" name="EntrepriseRaisonSocial" #raison_social="ngModel" [(ngModel)]="form.raison_social" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-div">
+                                <div class="input-group mb-3" style="width:150px;">
+                                    <div class="form-group">
+                                        <label class="label-elem" for="entrepriseFormeJuridique">Forme Juridique <span style="color: red">*</span></label>
+                                        <input type="text" class="form-control input-elem" aria-label="FormeJuridique" aria-describedby="basic-addon1" id="entrepriseFormeJuridique_modelInput" name="entrepriseFormeJuridique" #forme_juridique="ngModel" [(ngModel)]="form.forme_juridique" required>
+                                    </div>
+                                </div>
+                                <div class="input-group mb-3" style="width:150px;">
+                                    <div class="form-group">
+                                        <label class="label-elem" for="entrepriseAdresseEntreprise">Adresse Entreprise <span style="color: red">*</span></label>
+                                        <input type="text" class="form-control input-elem" aria-label="AdresseEntreprise" aria-describedby="basic-addon1" id="entrepriseAdresseEntreprise_modelInput" name="entrepriseAdresseEntreprise" #adrs_entreprise="ngModel" [(ngModel)]="form.adrs_entreprise" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-div">
+                                <div class="input-group mb-3" style="width:150px;">
+                                    <div class="form-group">
+                                        <label class="label-elem" for="entrepriseTelStandard">Tel Standard <span style="color: red">*</span></label>
+                                        <input type="text" class="form-control input-elem" aria-label="Tel Standard" aria-describedby="basic-addon1" id="entrepriseTelStandard_modelInput" name="entrepriseTelStandard" #tel_standard="ngModel" [(ngModel)]="form.tel_standard" required>
+                                    </div>
+                                </div>
+                                <div class="input-group mb-3" style="width:150px;">
+                                    <div class="form-group">
+                                        <label class="label-elem" for="entrepriseContact">Contact <span style="color: red">*</span></label>
+                                        <input type="text" class="form-control input-elem" aria-label="Contact" aria-describedby="basic-addon1" id="entrepriseContact_modelInput" name="entrepriseContact" #contact="ngModel" [(ngModel)]="form.contact" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-div">
+                                <div class="input-group mb-3" style="width:150px;">
+                                    <div class="form-group">
+                                        <label class="label-elem" for="entrepriseTelContact">Tel Contact <span style="color: red">*</span></label>
+                                        <input type="text" class="form-control input-elem" aria-label="TelContact" aria-describedby="basic-addon1" id="entrepriseTelContact_modelInput" name="entrepriseTelContact" #tel_contact="ngModel" [(ngModel)]="form.tel_contact" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>   
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        <button type="submit" class="btn edit-entreprise-btn" name="edit-entreprise-btn" id="edit-entreprise-btn">Enregistrer</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>

@@ -2,9 +2,10 @@ import { FileData } from "./fileData";
 
 export class Candidat {
     email : string = '';
+    cin: string = '';
     nom : string = '';
     prenom : string = '';
-    dateNaissance: Date = new Date();
-    sexe : string = '';
-    dossier: FileData | null = null
+    dossier: FileData | null = null;
+    dossierComplete: FileData | null = null;
+    statut: string = ''
 }
