@@ -1,0 +1,51 @@
+/* Style pour la barre de navigation */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère */
+  }
+  
+  .navbar-brand {
+    font-size: 1.5em; /* Taille du texte du logo */
+    font-weight: bold; /* Gras */
+  }
+  
+  .navbar-toggler {
+    border: none; /* Supprimer la bordure du bouton de bascule */
+  }
+  
+  /* Style pour la barre de navigation */
+  .navbar-nav {
+    margin-top: 10px; /* Espace en haut de la barre de navigation */
+  }
+  
+  .nav-link {
+    font-weight: bold; /* Gras */
+    margin-right: 15px; /* Marge entre les liens */
+  }
+  
+  /* Style pour la toolbar */
+  .toolbar {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: rgb(192, 221, 255);
+  }
+  
+  .toolbar img {
+    margin-right: 10px; /* Marge à droite de l'image */
+    width: 80vw;
+    height: 40vh;
+  }
+  
+  .toolbar span {
+    font-size: 20px;
+  }
+  
+  .spacer {
+    flex-grow: 1; /* Espace flexible pour pousser le contenu à droite */
+  }
+  
+  /* Style pour le contenu principal */
+  .router-outlet {
+    padding: 20px; /* Marge intérieure pour le contenu principal */
+  }
+  

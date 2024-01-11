@@ -231,7 +231,7 @@ createTuteurForm(){
     this.tuteurService.updateTuteur(this.editedTuteur).subscribe(
       data => {
         console.log(data);
-        // window.location.reload();
+        window.location.reload();
       },
       error => console.log(error)
     );

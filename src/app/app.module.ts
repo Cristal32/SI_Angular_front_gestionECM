@@ -16,6 +16,10 @@ import { StagesComponent } from './components/stages/stages.component';
 import { EntrepriseComponent } from './components/entreprise/entreprise.component';
 import { TuteurComponent } from './components/tuteur/tuteur.component';
 import { ProfComponent } from './components/prof/prof.component';
+import { EtudiantComponent } from './components/etudiant/etudiant.component';
+import { MyStageComponent } from './components/my-stage/my-stage.component';
+import { InfosComponent } from './components/infos/infos.component';
+import { CandidatsComponent } from './components/candidats/candidats.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +33,11 @@ import { ProfComponent } from './components/prof/prof.component';
     StagesComponent,
     EntrepriseComponent,
     TuteurComponent,
-    ProfComponent
+    ProfComponent,
+    EtudiantComponent,
+    MyStageComponent,
+    InfosComponent,
+    CandidatsComponent
   ],
   imports: [
     BrowserModule,

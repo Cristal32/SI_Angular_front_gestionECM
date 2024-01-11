@@ -1,1 +1,78 @@
-<p>login works!</p>
+<section class="vh-100" style="margin-top: 20vh; margin-right: 4vw;">
+    <div class="container-fluid h-custom" style="border: 2px solid brown; width: 35vw;">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <!-- <div class="col-md-9 col-lg-6 col-xl-5">
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" class="img-fluid" alt="Sample image"> -->
+          <!-- <img src="../assets/imgs/ecm_logo.png" width="100" height="80" alt="DXC Logo"/>
+        </div> -->
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1" style="width: 26vw; margin-top: 4vh; margin-left: 1vw;">
+          <!-- <div *ngIf="errorMessage" class="alert alert-danger"> -->
+            <!-- {{ errorMessage }} -->
+          <!-- </div> -->
+          <!-- <form *ngIf="!isLoggedIn" name="form" id="auth-form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate> method="post" -->
+            <!-- username input -->
+            <div class="form-outline mb-4">
+              <label class="form-label" for="username-input">Login</label>
+              <input type="text" name="username" id="username-input" class="form-control form-control-lg" placeholder="Saisir votre login" required />
+              <!-- <input type="text" name="username" id="username-input" class="form-control form-control-lg" [(ngModel)]="form.username" placeholder="Saisir votre login" #username="ngModel" required /> -->
+              <!-- <div *ngIf="username.errors && f.submitted" style="color: red;">
+                Login est obligatoire!
+              </div> -->
+            </div>
+  
+            <!-- Password input -->
+            <div class="form-outline mb-3">
+              <label class="form-label" for="password-input">Mot de passe</label>
+              <!-- <input type="password" name="password" id="password-input" class="form-control form-control-lg" [(ngModel)]="form.password" placeholder="Saisir votre mot de passe" #password="ngModel" required /> -->
+              <input type="password" name="password" id="password-input" class="form-control form-control-lg" placeholder="Saisir votre mot de passe"  required />
+              <!-- <div *ngIf="password.errors && f.submitted" style="color: red;">
+                Mot de passe est obligatoire!
+              </div> -->
+            </div>
+  
+            <div class="d-flex justify-content-between align-items-center">
+              <!-- Checkbox -->
+              <div class="form-check mb-0">
+                <label class="form-check-label" for="rememberMeCheckbox" sty>Se souvenir de moi</label>
+                <input class="form-check-input me-2" type="checkbox" value="" id="rememberMeCheckbox" />
+              </div>
+              <a href="#!" class="text-body">Mot de passe oublié?</a>
+            </div>
+  
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <button type="submit" class="btn button-class btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem; background-color: brown; color: #fff; margin-left: 6vw;">Se connecter</button>
+            </div>
+          <!-- </form> -->
+          <p class="small fw-bold mt-2 pt-1 mb-0" style="margin-left: 5vw; margin-top: 5vh;">Vous n'avez pas de compte? <a href="#!" class="link" style="color: rgb(143, 52, 241);">S'inscrire</a></p>
+        </div>
+        <!-- <div class="alert alert-success" *ngIf="isLoggedIn"> -->
+          <!-- Connecté en tant que <span *ngFor="let role of LoggedInUserRoles">{{ role.libelle }}</span>. -->
+        <!-- </div> -->
+      </div>
+    <!-- </div> -->
+
+    <!--footer
+    <div
+      class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
+      <div class="text-white mb-3 mb-md-0">
+        Copyright © 2023. All rights reserved.
+      </div>
+  
+      <div>
+        <a href="#!" class="text-white me-4">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="#!" class="text-white me-4">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#!" class="text-white me-4">
+          <i class="fab fa-google"></i>
+        </a>
+        <a href="#!" class="text-white">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+       Right -->
+    </div>
+  </section>
+  <router-outlet></router-outlet>

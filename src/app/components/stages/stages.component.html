@@ -1,5 +1,5 @@
 <div class="card"> 
-    <div class="card-header"><strong style="color:rgb(107, 24, 191);">Stages</strong></div>
+    <div class="card-header"><strong style="color:rgb(182, 55, 43);">Stages</strong></div>
     <div class="card-body">
         <!-----------------------searchbar---------------------------------------------------------------------->
         <div class="input-group mb-3 search-container">
@@ -7,7 +7,7 @@
             <div class="input-group-append" (click)="resetFilteredList(filter)">
                 <span class="input-group-btn" id="basic-addon2">
                     <button class="search-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16" style="color:rgb(107, 24, 191);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16" style="color:rgb(182, 55, 43);">
                             <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
                         </svg>
                     </button>
@@ -162,14 +162,14 @@
                     <td>{{stage.compteRendu}}</td> -->
                     <td>
                         <!--edit icon-->
-                        <button type="button" class="btn edit-stage-pen-btn" name="edit-stage-btn" data-bs-toggle="modal" data-bs-target="#editStageModal" (click)="assignSelectedStage(stage); assignEditedStage()" style="color:rgb(107, 24, 191);" title="Editer stage">
+                        <button type="button" class="btn edit-stage-pen-btn" name="edit-stage-btn" data-bs-toggle="modal" data-bs-target="#editStageModal" (click)="assignSelectedStage(stage); assignEditedStage()" style="color:rgb(182, 55, 43);" title="Editer stage">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                                 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                             </svg>
                         </button>
                         <!--delete icon-->
-                        <button type="button" class="btn delete-stage-x-btn" name="delete-stage-btn" data-bs-toggle="modal" data-bs-target="#deleteStageModal" (click)="assignSelectedStage(stage); assignDeletedStage()" style="color:rgb(107, 24, 191);" title="Supprimer stage">
+                        <button type="button" class="btn delete-stage-x-btn" name="delete-stage-btn" data-bs-toggle="modal" data-bs-target="#deleteStageModal" (click)="assignSelectedStage(stage); assignDeletedStage()" style="color:rgb(182, 55, 43);" title="Supprimer stage">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                                 <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
                             </svg>
@@ -276,7 +276,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="deleteStageModalLabel">Supprimer {{selectedStage.etudiant.nom}} {{selectedStage.etudiant.prenom}}</h1>
+          <h1 class="modal-title fs-5" id="deleteStageModalLabel">Supprimer le stage de {{selectedStage.etudiant.nom}} {{selectedStage.etudiant.prenom}}</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">

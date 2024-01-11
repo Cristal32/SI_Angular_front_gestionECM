@@ -1,4 +1,4 @@
-.add-entreprise-btn,.edit-btn,.edit-entreprise-btn{
+.add-etudiant-btn,.edit-btn,.edit-etudiant-btn{
     background-color: rgb(182, 55, 43);
     color: white;
 }
@@ -34,10 +34,10 @@ padding: 8px;
 text-align: left;
 }
 /* ============================================================================== */
-.create-entreprise-btn,.entreprises-div{
+.create-etudiant-btn,.etudiants-div{
     display: inline-block;
 }
-.create-entreprise-btn{
+.create-etudiant-btn{
     float: right;
     border: none;
     background-color: white;
@@ -71,7 +71,7 @@ text-align: left;
     margin-top: 7px;
     margin-left: 9px;
 }
-.list-entreprises{
+.list-etudiants{
     margin-bottom: 15px;
 }
 
@@ -81,7 +81,7 @@ text-align: left;
     padding: 10px; 
     margin-bottom: 10px;
 }
-.edit-entreprise-modal-body {
+.edit-etudiant-modal-body {
     display: flex;
     flex-direction: column;
     align-items: center;

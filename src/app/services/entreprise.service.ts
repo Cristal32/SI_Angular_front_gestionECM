@@ -16,6 +16,8 @@ export class EntrepriseService {
     return this.http.get<Entreprise[]>(`${this.apiServerUrl}/entreprise/getAll`);
   }
 
+  
+
   //add entreprise
   public addEntreprise(entreprise: Entreprise): Observable<Entreprise>{
     return this.http.post<Entreprise>(`${this.apiServerUrl}/entreprise/add`, entreprise);

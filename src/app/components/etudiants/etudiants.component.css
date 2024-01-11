@@ -1,11 +1,13 @@
 .add-etudiant-btn,.edit-btn,.edit-etudiant-btn{
-    background-color: rgb(132, 55, 180);
+    /* background-color: rgb(132, 55, 180); */
+    background-color: rgb(182, 55, 43);
     color: white;
 }
 .button-custom-style{
     background: none;
     border: none;
-    color: rgb(132, 55, 180);
+    /* color: rgb(132, 55, 180); */
+    color: rgb(182, 55, 43);
 }
 /* ========================== card stagiaires ========================== */
 .custom-card{
@@ -65,7 +67,8 @@ text-align: left;
 }
 .stage-detail-btn{
     margin-right: 10px;
-    color: rgb(107, 24, 191);
+    /* color: rgb(107, 24, 191); */
+    color: rgb(182, 55, 43);
 }
 .label-elem{
     margin-top: 7px;

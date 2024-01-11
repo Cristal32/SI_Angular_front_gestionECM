@@ -19,6 +19,7 @@ export class EtudiantsComponent {
   filteredListeEtudiants: Etudiant[] = [];
   selectedEtudiant: Etudiant = new Etudiant();
   editedEtudiant: Etudiant = new Etudiant();
+  deletedEtudiant: Etudiant = new Etudiant();
 
   //tabs
   editEtudiantModal_ActiveTab: string = '';
@@ -79,6 +80,11 @@ export class EtudiantsComponent {
     console.log(this.editedEtudiant)
   }
 
+
+  assignDeletedEtudiant(){
+    this.deletedEtudiant = {...this.selectedEtudiant};
+  }
+
   //============================================== get all etudiants ==============================================
 
   public getEtudiants(): void{
@@ -118,6 +124,19 @@ export class EtudiantsComponent {
       error => console.log(error)
     );
   }
+
+
+    //========================== delete Prof ========================================= 
+
+deleteEtudiantForm(){
+  this.etudiantService.deleteEtudiant(this.deletedEtudiant.id).subscribe(
+    data => {
+      console.log(data);
+      window.location.reload();
+    },
+    error => console.log(error)
+  );
+}
 
   //============================================== download stagiaire cv ============================================== 
 
