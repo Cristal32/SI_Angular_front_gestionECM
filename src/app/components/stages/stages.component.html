@@ -35,7 +35,6 @@
                     <th>Entreprise</th>
                     <th>Type</th>
                     <th>Compte rendu</th>
-                    <th>Statut</th>
                     
                     </tr>
                 </thead>
@@ -49,7 +48,6 @@
                     <td>{{stage.entreprise?.raisonSoc}}</td>
                     <td>{{stage.typeStage?.id}}</td>
                     <td>{{stage.compteRendu}}</td>
-                    <td>{{stage.statut}}</td>
                     <td>
                         <!--edit icon-->
                         <button type="button" class="btn edit-stage-pen-btn" name="edit-stage-btn" data-bs-toggle="modal" data-bs-target="#editStageModal" (click)="assignSelectedStage(stage); assignEditedStage()" style="color:rgb(107, 24, 191);" title="Editer stage">
@@ -88,8 +86,8 @@
                             <div class="input-div">
                                 <div class="input-group mb-3" style="width:150px;">
                                     <div class="form-group">
-                                        <label class="label-elem" for="stageAnneeStage_modelInput">Annee Stage <span style="color: red">*</span></label>
-                                        <input type="number" class="form-control input-elem" aria-label="AnneeStage" aria-describedby="basic-addon1" id="stageAnneeStage_modelInput" name="stageAnneeStage" #annee_stage="ngModel" [(ngModel)]="form.annee_stage" required>
+                                        <label class="label-elem" for="stageAnnee_modelInput">Annee Stage <span style="color: red">*</span></label>
+                                        <input type="number" class="form-control input-elem" aria-label="AnneeStage" aria-describedby="basic-addon1" id="stageAnnee_modelInput" name="stageAnneeStage" #annee_stage="ngModel" [(ngModel)]="form.annee_stage" required>
                                         <div *ngIf="annee_stage.errors && f.submitted" style="color: red;">
                                         Annee Stage obligatoire!
                                         </div>
@@ -98,7 +96,7 @@
                                 <div class="input-group mb-3" style="width:150px;">
                                     <div class="form-group">
                                         <label class="label-elem" for="stageEtudiant_modelInput">Etudiant <span style="color: red">*</span></label>
-                                        <select class="form-control" name="etudiant" [(ngModel)]="form.etudiant" #etudiant="ngModel" required>
+                                        <select id="stageEtudiant_modelInput" class="form-control" name="etudiant" [(ngModel)]="form.etudiant" #etudiant="ngModel" required>
                                             <option *ngFor="let etudiant of ListeEtudiants" [ngValue]="etudiant">{{etudiant.nom}} {{etudiant.prenom}}</option>
                                         </select>
                                         <div *ngIf="etudiant.errors && f.submitted" style="color: red;">
@@ -111,7 +109,7 @@
                                 <div class="input-group mb-3" style="width:150px;">
                                     <div class="form-group">
                                         <label class="label-elem" for="stageType_modelInput">Type de stage</label>
-                                        <select class="form-control" name="typeStage" [(ngModel)]="form.typeStage" ngModel>
+                                        <select id="stageType_modelInput" class="form-control" name="typeStage" [(ngModel)]="form.typeStage" ngModel>
                                         <option *ngFor="let typeStage of ListeTypesStage" [ngValue]="typeStage">{{typeStage.id}}</option>
                                         </select>
                                     </div>
@@ -119,7 +117,7 @@
                                 <div class="input-group mb-3" style="width:150px;">
                                     <div class="form-group">
                                         <label class="label-elem" for="stageProf_modelInput">Prof</label>
-                                        <select class="form-control" name="prof" [(ngModel)]="form.prof" ngModel>
+                                        <select id="stageProf_modelInput" class="form-control" name="prof" [(ngModel)]="form.prof" ngModel>
                                         <option *ngFor="let prof of ListeProfs" [ngValue]="prof">{{prof.nom}} {{prof.prenom}}</option>
                                         </select>
                                     </div>
@@ -148,7 +146,7 @@
                                 <div class="input-group mb-3" style="width:150px;">
                                     <div class="form-group">
                                         <label class="label-elem" for="stageEntreprise_modelInput">Entreprise</label>
-                                        <select class="form-control" name="entreprise" [(ngModel)]="form.entreprise" ngModel>
+                                        <select id="stageEntreprise_modelInput" class="form-control" name="entreprise" [(ngModel)]="form.entreprise" ngModel>
                                         <option *ngFor="let entreprise of ListeEntreprises" [ngValue]="entreprise">{{entreprise.raisonSoc}}</option>
                                         </select>
                                         <div *ngIf="statut_stage.errors && f.submitted" style="color: red;">Entreprise obligatoire!
@@ -158,7 +156,7 @@
                                 <div class="input-group mb-3" style="width:150px;">
                                     <div class="form-group">
                                         <label class="label-elem" for="stageTuteur_modelInput">Tuteur</label>
-                                        <select class="form-control" name="tuteur" [(ngModel)]="form.tuteur" ngModel>
+                                        <select id="stageTuteur_modelInput" class="form-control" name="tuteur" [(ngModel)]="form.tuteur" ngModel>
                                             <option *ngFor="let tuteur of ListeTuteurs" [ngValue]="tuteur">{{tuteur.nom}} {{tuteur.prenom}}</option>
                                         </select>
                                     </div>

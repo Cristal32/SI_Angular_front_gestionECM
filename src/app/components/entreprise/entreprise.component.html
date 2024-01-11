@@ -102,27 +102,27 @@
                             <div class="input-div">
                                 <div class="input-group mb-3" style="width:150px;">
                                     <div class="form-group">
-                                        <label class="label-elem" for="entrepriseFormeJuridique">Forme Juridique <span style="color: red">*</span></label>
+                                        <label class="label-elem" for="entrepriseFormeJuridique_modelInput">Forme Juridique <span style="color: red">*</span></label>
                                         <input type="text" class="form-control input-elem" aria-label="FormeJuridique" aria-describedby="basic-addon1" id="entrepriseFormeJuridique_modelInput" name="entrepriseFormeJuridique" #forme_juridique="ngModel" [(ngModel)]="form.forme_juridique" required>
                                     </div>
                                 </div>
                                 <div class="input-group mb-3" style="width:150px;">
                                     <div class="form-group">
-                                        <label class="label-elem" for="entrepriseAdresseEntreprise">Adresse Entreprise <span style="color: red">*</span></label>
-                                        <input type="text" class="form-control input-elem" aria-label="AdresseEntreprise" aria-describedby="basic-addon1" id="entrepriseAdresseEntreprise_modelInput" name="entrepriseAdresseEntreprise" #adrs_entreprise="ngModel" [(ngModel)]="form.adrs_entreprise" required>
+                                        <label class="label-elem" for="entrepriseAdresse_modelInput">Adresse Entreprise <span style="color: red">*</span></label>
+                                        <input type="text" class="form-control input-elem" aria-label="AdresseEntreprise" aria-describedby="basic-addon1" id="entrepriseAdresse_modelInput" name="entrepriseAdresseEntreprise" #adrs_entreprise="ngModel" [(ngModel)]="form.adrs_entreprise" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="input-div">
                                 <div class="input-group mb-3" style="width:150px;">
                                     <div class="form-group">
-                                        <label class="label-elem" for="entrepriseTelStandard">Tel Standard <span style="color: red">*</span></label>
+                                        <label class="label-elem" for="entrepriseTelStandard_modelInput">Tel Standard <span style="color: red">*</span></label>
                                         <input type="text" class="form-control input-elem" aria-label="Tel Standard" aria-describedby="basic-addon1" id="entrepriseTelStandard_modelInput" name="entrepriseTelStandard" #tel_standard="ngModel" [(ngModel)]="form.tel_standard" required>
                                     </div>
                                 </div>
                                 <div class="input-group mb-3" style="width:150px;">
                                     <div class="form-group">
-                                        <label class="label-elem" for="entrepriseContact">Contact <span style="color: red">*</span></label>
+                                        <label class="label-elem" for="entrepriseContact_modelInput">Contact <span style="color: red">*</span></label>
                                         <input type="text" class="form-control input-elem" aria-label="Contact" aria-describedby="basic-addon1" id="entrepriseContact_modelInput" name="entrepriseContact" #contact="ngModel" [(ngModel)]="form.contact" required>
                                     </div>
                                 </div>
@@ -130,7 +130,7 @@
                             <div class="input-div">
                                 <div class="input-group mb-3" style="width:150px;">
                                     <div class="form-group">
-                                        <label class="label-elem" for="entrepriseTelContact">Tel Contact <span style="color: red">*</span></label>
+                                        <label class="label-elem" for="entrepriseTelContact_modelInput">Tel Contact <span style="color: red">*</span></label>
                                         <input type="text" class="form-control input-elem" aria-label="TelContact" aria-describedby="basic-addon1" id="entrepriseTelContact_modelInput" name="entrepriseTelContact" #tel_contact="ngModel" [(ngModel)]="form.tel_contact" required>
                                     </div>
                                 </div>
@@ -187,8 +187,8 @@
                         <div class="input-div">
                             <div class="input-group mb-3" style="width:150px;">
                                 <div class="form-group">
-                                    <label class="label-elem" for="entrepriseAdresseEntreprise_modelInput">Adresse</label>
-                                    <input type="text" class="form-control input-elem" aria-label="AdresseEntreprise" aria-describedby="basic-addon1" id="entrepriseAdresseEntreprise_modelInput" name="entrepriseAdresseEntreprise" [value]="selectedEntreprise.adrs" [(ngModel)]="editedEntreprise.adrs">
+                                    <label class="label-elem" for="entrepriseAdresse_modelInput">Adresse</label>
+                                    <input type="text" class="form-control input-elem" aria-label="AdresseEntreprise" aria-describedby="basic-addon1" id="entrepriseAdresse_modelInput" name="entrepriseAdresseEntreprise" [value]="selectedEntreprise.adrs" [(ngModel)]="editedEntreprise.adrs">
                                 </div>
                             </div>
                         </div>
@@ -196,7 +196,7 @@
                             <div class="input-group mb-3" style="width:150px;">
                                 <div class="form-group">
                                     <label class="label-elem" for="entrepriseTelStandard_modelInput">Tel Standard</label>
-                                    <input type="text" class="form-control input-elem" aria-label="TelStandardEntreprise" aria-describedby="basic-addon1" id="entrepriseTelStandardEntreprise_modelInput" name="entrepriseTelStandardEntreprise" [value]="selectedEntreprise.telStandard" [(ngModel)]="editedEntreprise.telStandard">
+                                    <input type="text" class="form-control input-elem" aria-label="TelStandardEntreprise" aria-describedby="basic-addon1" id="entrepriseTelStandard_modelInput" name="entrepriseTelStandardEntreprise" [value]="selectedEntreprise.telStandard" [(ngModel)]="editedEntreprise.telStandard">
                                 </div>
                             </div>
                         </div>
@@ -204,7 +204,7 @@
                             <div class="input-group mb-3" style="width:150px;">
                                 <div class="form-group">
                                     <label class="label-elem" for="entrepriseContact_modelInput">Contact</label>
-                                    <input type="text" class="form-control input-elem" aria-label="ContactEntreprise" aria-describedby="basic-addon1" id="entrepriseContactEntreprise_modelInput" name="entrepriseContactEntreprise" [value]="selectedEntreprise.contact" [(ngModel)]="editedEntreprise.contact">
+                                    <input type="text" class="form-control input-elem" aria-label="ContactEntreprise" aria-describedby="basic-addon1" id="entrepriseContact_modelInput" name="entrepriseContactEntreprise" [value]="selectedEntreprise.contact" [(ngModel)]="editedEntreprise.contact">
                                 </div>
                             </div>
                         </div>
@@ -212,7 +212,7 @@
                             <div class="input-group mb-3" style="width:150px;">
                                 <div class="form-group">
                                     <label class="label-elem" for="entrepriseTelContact_modelInput">Tel Contact</label>
-                                    <input type="text" class="form-control input-elem" aria-label="TelContactEntreprise" aria-describedby="basic-addon1" id="entrepriseTelContactEntreprise_modelInput" name="entrepriseTelContactEntreprise" [value]="selectedEntreprise.telContact" [(ngModel)]="editedEntreprise.telContact">
+                                    <input type="text" class="form-control input-elem" aria-label="TelContactEntreprise" aria-describedby="basic-addon1" id="entrepriseTelContact_modelInput" name="entrepriseTelContactEntreprise" [value]="selectedEntreprise.telContact" [(ngModel)]="editedEntreprise.telContact">
                                 </div>
                             </div>
                         </div>

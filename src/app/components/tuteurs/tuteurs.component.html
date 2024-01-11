@@ -30,7 +30,7 @@
                 <table class="table table-striped table-hover custom-table" id="tuteurs-table">
                 <thead>
                     <tr>
-                        <!-- <th>ID</th> -->
+                        <th>Code</th>
                         <th>Nom</th>
                         <th>Prénom</th>
                         <th>Tel</th>
@@ -39,7 +39,7 @@
                 <tbody>
                     <tr *ngFor = "let tuteur of filteredListeTuteurs" class="info-row"> 
                     
-                    <!-- <td>{{tuteur.id}}</td> -->
+                    <td>{{tuteur.id}}</td>
                     <td>{{tuteur.nom}}</td>
                     <td>{{tuteur.prenom}}</td>
                     <td>{{tuteur.tel}}</td>
@@ -81,8 +81,8 @@
                             <div class="input-div" >
                                 <div class="input-group mb-3" style="width:150px;">
                                     <div class="form-group">
-                                        <label class="label-elem" for="TuteurId_modelInput">code Tuteur <span style="color: red">*</span></label>
-                                        <input type="number" class="form-control input-elem" aria-label="TuteurId" aria-describedby="basic-addon1" id="stageTuteurId_modelInput" name="TuteurId" #id_tuteur="ngModel" [(ngModel)]="form.id_tuteur" required>
+                                        <label class="label-elem" for="TuteurId_modelInput">Code Tuteur <span style="color: red">*</span></label>
+                                        <input type="number" class="form-control input-elem" aria-label="TuteurId" aria-describedby="basic-addon1" id="TuteurId_modelInput" name="TuteurId" #id_tuteur="ngModel" [(ngModel)]="form.id_tuteur" required>
                                     </div>
                                 </div>
                                 <div class="input-group mb-3" style="width:150px;">
@@ -131,7 +131,7 @@
                         <div class="input-div">
                             <div class="input-group mb-3" style="width:150px;">
                                 <div class="form-group">
-                                    <label class="label-elem" for="tuteurID">Matricule Tuteur</label>
+                                    <label class="label-elem" for="tuteurID_modelInput">Code Tuteur</label>
                                     <input type="text" class="form-control input-elem" aria-label="ID" aria-describedby="basic-addon1" id="tuteurID_modelInput" name="tuteurID" [value]="selectedTuteur.id" [(ngModel)]="editedTuteur.id">
                                 </div>
                             </div>
@@ -149,7 +149,7 @@
                         <div class="input-div">
                             <div class="input-group mb-3" style="width:150px;">
                                 <div class="form-group">
-                                    <label class="label-elem" for="tuteurNom">Nom Tuteur</label>
+                                    <label class="label-elem" for="tuteurNom_modelInput">Nom Tuteur</label>
                                     <input type="text" class="form-control input-elem" aria-label="Nom" aria-describedby="basic-addon1" id="tuteurNom_modelInput" name="tuteurNom" [value]="selectedTuteur.nom" [(ngModel)]="editedTuteur.nom">
                                 </div>
                             </div>
@@ -157,7 +157,7 @@
                         <div class="input-div">
                             <div class="input-group mb-3" style="width:150px;">
                                 <div class="form-group">
-                                    <label class="label-elem" for="tuteurPrenom">Prenom Tuteur</label>
+                                    <label class="label-elem" for="tuteurPrenom_modelInput">Prenom Tuteur</label>
                                     <input type="text" class="form-control input-elem" aria-label="Prenom" aria-describedby="basic-addon1" id="tuteurPrenom_modelInput" name="tuteurPrenom" [value]="selectedTuteur.prenom" [(ngModel)]="editedTuteur.prenom">
                                 </div>
                             </div>
@@ -165,7 +165,7 @@
                         <div class="input-div">
                             <div class="input-group mb-3" style="width:150px;">
                                 <div class="form-group">
-                                    <label class="label-elem" for="tuteurTel">Tel Tuteur</label>
+                                    <label class="label-elem" for="tuteurTel_modelInput">Tel Tuteur</label>
                                     <input type="text" class="form-control input-elem" aria-label="Tel" aria-describedby="basic-addon1" id="tuteurTel_modelInput" name="tuteurTel" [value]="selectedTuteur.tel" [(ngModel)]="editedTuteur.tel">
                                 </div>
                             </div>

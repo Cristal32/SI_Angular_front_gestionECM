@@ -46,8 +46,8 @@
                     <td>{{prof.prenom}}</td>
                     <td>{{prof.adrs}}</td>
                     <td>{{prof.tel}}</td>
-                    <td>{{prof.dateEmb}}</td>
-                    <td>{{prof.dateDep}}</td>
+                    <td>{{prof.dateEmbauche}}</td>
+                    <td>{{prof.dateDepart}}</td>
                     <td>
                         <!--edit icon-->
                         <button type="button" class="btn edit-prof-pen-btn" name="edit-prof-btn" data-bs-toggle="modal" data-bs-target="#editProfModal" (click)="assignSelectedProf(prof); assignEditedProf()" style="color:rgb(107, 24, 191);" title="Editer prof">
@@ -160,7 +160,7 @@
                         <div class="input-div">
                             <div class="input-group mb-3" style="width:150px;">
                                 <div class="form-group">
-                                    <label class="label-elem" for="profNom">Nom Prof</label>
+                                    <label class="label-elem" for="profNom_modelInput">Nom Prof</label>
                                     <input type="text" class="form-control input-elem" aria-label="Nom" aria-describedby="basic-addon1" id="profNom_modelInput" name="profNom" [value]="selectedProf.nom" [(ngModel)]="editedProf.nom">
                                 </div>
                             </div>
@@ -168,7 +168,7 @@
                         <div class="input-div">
                             <div class="input-group mb-3" style="width:150px;">
                                 <div class="form-group">
-                                    <label class="label-elem" for="profPrenom">Prenom Prof</label>
+                                    <label class="label-elem" for="profPrenom_modelInput">Prenom Prof</label>
                                     <input type="text" class="form-control input-elem" aria-label="Prenom" aria-describedby="basic-addon1" id="profPrenom_modelInput" name="profPrenom" [value]="selectedProf.prenom" [(ngModel)]="editedProf.prenom">
                                 </div>
                             </div>
@@ -176,7 +176,7 @@
                         <div class="input-div">
                             <div class="input-group mb-3" style="width:150px;">
                                 <div class="form-group">
-                                    <label class="label-elem" for="profAdresse">Adresse Prof</label>
+                                    <label class="label-elem" for="profAdresse_modelInput">Adresse Prof</label>
                                     <input type="text" class="form-control input-elem" aria-label="Adresse" aria-describedby="basic-addon1" id="profAdresse_modelInput" name="profAdresse" [value]="selectedProf.adrs" [(ngModel)]="editedProf.adrs">
                                 </div>
                             </div>
@@ -184,7 +184,7 @@
                         <div class="input-div">
                             <div class="input-group mb-3" style="width:150px;">
                                 <div class="form-group">
-                                    <label class="label-elem" for="profTel">Tel Prof</label>
+                                    <label class="label-elem" for="profTel_modelInput">Tel Prof</label>
                                     <input type="text" class="form-control input-elem" aria-label="Tel" aria-describedby="basic-addon1" id="profTel_modelInput" name="profTel" [value]="selectedProf.tel" [(ngModel)]="editedProf.tel">
                                 </div>
                             </div>
@@ -192,14 +192,14 @@
                         <div clasembaus="input-div">
                             <div class="input-group mb-3" style="width:150px;">
                                 <div class="form-group">
-                                    <label class="label-elem" for="profDateEmb">Date Embauche Prof</label>
-                                    <input type="date" class="form-control input-elem" aria-label="DateEmb" aria-describedby="basic-addon1" id="profDateEmb_modelInput" name="profDateEmb" [value]="selectedProf.dateEmb" [(ngModel)]="editedProf.dateEmb">
+                                    <label class="label-elem" for="profDateEmb_modelInput">Date Embauche Prof</label>
+                                    <input type="date" class="form-control input-elem" aria-label="DateEmb" aria-describedby="basic-addon1" id="profDateEmb_modelInput" name="profDateEmb" [value]="selectedProf.dateEmbauche" [(ngModel)]="editedProf.dateEmbauche">
                                 </div>
                             </div>
                             <div class="input-group mb-3" style="width:150px;">
                                 <div class="form-group">
-                                    <label class="label-elem" for="profDateDep">Date Depart Prof</label>
-                                    <input type="date" class="form-control input-elem" aria-label="DateDep" aria-describedby="basic-addon1" id="profDateDep_modelInput" name="profDateDep" [value]="selectedProf.dateDep" [(ngModel)]="editedProf.dateDep">
+                                    <label class="label-elem" for="profDateDep_modelInput">Date Depart Prof</label>
+                                    <input type="date" class="form-control input-elem" aria-label="DateDep" aria-describedby="basic-addon1" id="profDateDep_modelInput" name="profDateDep" [value]="selectedProf.dateDepart" [(ngModel)]="editedProf.dateDepart">
                                 </div>
                             </div>
                         </div>
