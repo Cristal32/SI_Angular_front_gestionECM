@@ -10,20 +10,29 @@ import { CandidatsComponent } from './components/candidats/candidats.component';
 import { EtudiantComponent } from './components/etudiant/etudiant.component';
 import { MyStageComponent } from './components/my-stage/my-stage.component';
 import { InfosComponent } from './components/infos/infos.component';
+import { TuteursComponent } from './components/tuteurs/tuteurs.component';
+import { AccessComponent } from './components/access/access.component';
+import { RolesComponent } from './components/roles/roles.component';
+import { ProfComponent } from './components/prof/prof.component';
+import { CandidatComponent } from './components/candidat/candidat.component';
+import { InfosCandidatComponent } from './components/infos-candidat/infos-candidat.component';
 
 const routes: Routes = [
   {path:'', redirectTo: 'accueil', pathMatch: 'full'},
-  {path:'accueil', component: AccueilComponent},
-  {path:'register', component: RegisterComponent},
-  {path:'login', component: LoginComponent},
-  {path:'etudiant', component: EtudiantComponent},
   {
-    path:'dashboard', 
-    component: DashboardComponent,
+    path:'accueil', 
+    component: AccueilComponent
+  },
+  {
+    path:'login', 
+    component: LoginComponent
+  },
+  {path:'register', component: RegisterComponent},
+  {
+    path:'candidat', 
+    component: CandidatComponent,
     children:[
-      {path:'etudiants', component: EtudiantsComponent},
-      {path:'stages', component: StagesComponent},
-      {path:'candidats', component: CandidatsComponent}
+      {path:'infos_candidats', component: InfosCandidatComponent}
     ]
   },
   {
@@ -32,6 +41,19 @@ const routes: Routes = [
     children:[
       {path:'my-stage', component: MyStageComponent},
       {path:'infos', component: InfosComponent}
+    ]
+  },
+  {
+    path:'dashboard', 
+    component: DashboardComponent,
+    children:[
+      {path:'etudiants', component: EtudiantsComponent},
+      {path:'stages', component: StagesComponent},
+      {path:'candidats', component: CandidatsComponent},
+      {path:'profs', component: ProfComponent},
+      {path:'tuteurs', component: TuteursComponent},
+      {path:'accesses', component: AccessComponent},
+      {path:'roles', component: RolesComponent}
     ]
   }
 ];

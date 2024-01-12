@@ -1,0 +1,73 @@
+<div class="card"> 
+    <div class="card-body">
+        <div class="card list-stages custom-card">
+            <div class="card-header"><strong style="height: 30px;" style="color:rgb(182, 55, 43);"> Voici vos informations personnelles</strong></div>
+            <div class="card-body custom-card-body">
+                <li>Nom : {{candidat.nom}}</li>
+                <li>Prénom : {{candidat.prenom}}</li>
+                <li>Date de Naissance : {{candidat.dateNaissance  | date: 'dd/MM/yyyy'}}</li>
+                <li>Promo: {{candidat.promo.annee}}</li>
+                <li>Statut Dossier : {{candidat.statut}}</li>
+                <li> Votre premier dossier : 
+                    <span *ngIf="candidat.dossier">
+                        <button class="button-custom-style" title="Télécharger le dossier du candidat">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                <path d="M0.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                            </svg>
+                            <span>{{ candidat.dossier.fileName }}</span>
+                        </button>
+                    </span>
+                </li>
+            </div>
+
+            <button type="button" class="btn edit-etudiant-btn" name="edit-etudiant-btn" id="edit-etudiant-btn" data-bs-toggle="modal" data-bs-target="#editEtudiantModal" (click)="assignSelectedCandidat(candidat); assignEditedCandidat()" style="color:rgb(219, 215, 223);" title="Editer etudiant">Modifier vos infos</button>
+        </div>
+    </div>
+</div>
+
+<!-- ======================== edit stage modal ======================== -->
+<div class="modal fade" id="editEtudiantModal" tabindex="-1" aria-labelledby="editEtudiantModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="editEtudiantModalLabel">Editer Candidat</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form (ngSubmit)="editCandidatForm()"> 
+            <div class="modal-body edit-etudiant-modal-body">
+                    <div class="form-wrapper">
+                        <div class="input-div">
+                            <div class="input-group mb-3" style="width:150px;">
+                                <div class="form-group">
+                                    <label class="label-elem" for="etudiantNom_modelInput">Nom</label>
+                                    <input type="text" class="form-control input-elem" aria-label="Nom" aria-describedby="basic-addon1" id="etudiantNom_modelInput" name="etudiantNom" [value]="selectedCandidat.nom" [(ngModel)]="editedCandidat.nom">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-div">
+                            <div class="input-group mb-3" style="width:150px;">
+                                <div class="form-group">
+                                    <label class="label-elem" for="etudiantPrenom_modelInput">Prenom</label>
+                                    <input type="text" class="form-control input-elem" aria-label="Nom" aria-describedby="basic-addon1" id="etudiantPrenom_modelInput" name="etudiantPrenom" [value]="selectedCandidat.prenom" [(ngModel)]="editedCandidat.prenom">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-div">
+                            <div class="input-group mb-3" style="width:150px;">
+                                <div class="form-group">
+                                    <label class="label-elem" for="etudiantDateNaissance_modelInput">Date de naissance</label>
+                                    <input type="date" class="form-control input-elem" aria-label="dateNaissance" aria-describedby="basic-addon1" id="etudiantDateNaissance_modelInput" name="etudiantDateNaissance" [value]="selectedCandidat.dateNaissance" [(ngModel)]="editedCandidat.dateNaissance">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                <button type="submit" class="btn edit-etudiant-btn" name="edit-etudiant-btn" id="edit-etudiant-btn" data-bs-dismiss="modal">Enregistrer</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>

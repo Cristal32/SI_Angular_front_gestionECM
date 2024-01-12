@@ -1,20 +1,22 @@
 <div class="card"> 
-    <div class="card-header"><strong style="color:rgb(107, 24, 191);">Etudiants</strong></div>
+    <div class="card-header"><strong 
+        style="color:rgb(182, 55, 43);"
+        >Etudiants</strong></div>
     <div class="card-body">
-        <!-----------------------searchbar---------------------------------------------------------------------->
+        <!-----------------------searchbar--------------------------------------------->
         <div class="input-group mb-3 search-container">
             <input type="text" class="form-control" placeholder="Chercher un etudiant" aria-label="Recipient's stage" aria-describedby="basic-addon2" id="search-input" (keyup.enter)="filterResults(filter.value)" #filter>
             <div class="input-group-append" (click)="resetFilteredList(filter)">
                 <span class="input-group-btn" id="basic-addon2">
                     <button class="search-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16" style="color:rgb(107, 24, 191);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16" style="color:rgb(182, 55, 43);">
                             <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
                         </svg>
                     </button>
                 </span>
             </div>
         </div>
-        <!-----------------------liste etudiants---------------------------------------------------------------------->
+        <!-------------------------liste etudiants------------------------------------>
         <div class="card list-etudiants custom-card">
             <div class="card-header" style="height: 30px;">
             </div>
@@ -46,10 +48,16 @@
                     <td>{{etudiant.promo?.annee}}</td>
                     <td>
                         <!--edit icon-->
-                        <button type="button" class="btn edit-etudiant-pen-btn" name="edit-etudiant-btn" data-bs-toggle="modal" data-bs-target="#editEtudiantModal" (click)="assignSelectedEtudiant(etudiant); assignEditedEtudiant()" style="color:rgb(107, 24, 191);" title="Editer etudiant">
+                        <button type="button" class="btn edit-etudiant-pen-btn" name="edit-etudiant-btn" data-bs-toggle="modal" data-bs-target="#editEtudiantModal" (click)="assignSelectedEtudiant(etudiant); assignEditedEtudiant()" style="color:rgb(182, 55, 43);" title="Editer etudiant">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                                 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                            </svg>
+                        </button>
+                        <!--delete icon-->
+                        <button type="button" class="btn delete-etudiant-x-btn" name="delete-etudiant-btn" data-bs-toggle="modal" data-bs-target="#deleteEtudiantModal" (click)="assignSelectedEtudiant(etudiant); assignDeletedEtudiant()" style="color:rgb(182, 55, 43);" title="Supprimer Etudiant">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
                             </svg>
                         </button>
                     </td>
@@ -66,7 +74,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="editEtudiantModalLabel">Editer stage</h1>
+          <h1 class="modal-title fs-5" id="editEtudiantModalLabel">Editer Etudiant</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <form (ngSubmit)="editEtudiantForm()"> 
@@ -105,6 +113,14 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="input-div">
+                            <div class="input-group mb-3" style="width:150px;">
+                                <div class="form-group">
+                                    <label class="label-elem" for="etudiantSexe_modelInput">Sexe</label>
+                                    <input type="text" class="form-control input-elem" aria-label="Sexe" aria-describedby="basic-addon1" id="etudiantSexe_modelInput" name="etudiantSexe" [value]="selectedEtudiant.sexe" [(ngModel)]="editedEtudiant.sexe">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             <div class="modal-footer">
@@ -112,6 +128,28 @@
                 <button type="submit" class="btn edit-etudiant-btn" name="edit-etudiant-btn" id="edit-etudiant-btn" data-bs-dismiss="modal">Enregistrer</button>
             </div>
         </form>
+      </div>
+    </div>
+  </div>
+
+<!-- ======================== delete prof modal ============================== -->
+
+<div class="modal fade" id="deleteEtudiantModal" tabindex="-1" aria-labelledby="deleteEtudiantModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="deleteEtudiantModalLabel">Supprimer {{selectedEtudiant.nom}} {{selectedEtudiant.prenom}}</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div>Etes-vous sûrs de vouloir supprimer cet etudiant?<br><br></div>
+            <form (ngSubmit) = "deleteEtudiantForm()"> 
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button type="submit" class="btn delete-etudiant-btn btn-danger" name="delete-etudiant-btn" id="delete-etudiant-btn" data-bs-dismiss="modal">Supprimer</button>
+                  </div>
+            </form>
+        </div>
       </div>
     </div>
   </div>

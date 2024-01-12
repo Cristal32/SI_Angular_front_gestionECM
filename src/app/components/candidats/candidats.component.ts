@@ -160,4 +160,27 @@ export class CandidatsComponent implements OnInit{
       }
     );
   }
+
+  //============================================== search bar ==============================================
+  filterResults(text: string) {
+    if (!text) {
+      this.filteredListeCandidats = this.listeCandidats;
+    } else {
+      this.filteredListeCandidats = this.listeCandidats.filter(candidat =>
+        this.matchesSearchCriteria(candidat, text)
+      );
+    }
+  }
+  matchesSearchCriteria(candidat: Candidat, text: string): boolean {
+    const searchFields: string[] = [
+      candidat?.nom.toLowerCase(),
+      candidat?.prenom.toLowerCase(),
+      candidat?.email.toLowerCase()
+    ];
+    return searchFields.some(field => field.includes(text.toLowerCase()));
+  }
+  resetFilteredList(input: HTMLInputElement) {
+    this.filteredListeCandidats = this.listeCandidats;
+    input.value = '';
+  }
 }

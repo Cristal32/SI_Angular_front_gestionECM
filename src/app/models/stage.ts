@@ -12,5 +12,6 @@ export class Stage{
     entreprise : Entreprise = new Entreprise();
     tuteur : Tuteur = new Tuteur();
     type : TypeStage = new TypeStage();
-    statut : string = ''
+    statut : string = '';
+    compte_rendu : string = ''
 }

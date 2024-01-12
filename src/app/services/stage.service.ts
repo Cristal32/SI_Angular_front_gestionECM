@@ -14,6 +14,10 @@ export class StageService {
     return this.http.get<Stage[]>(`${this.apiServerUrl}/stage/getAll`);
   }
 
+  public getStagesByEtudiantId(etudiantId: number): Observable<Stage[]>{
+    return this.http.get<Stage[]>(`${this.apiServerUrl}/stage/getByEtudiantId/${etudiantId}`);
+  }
+
   //add stage
   public addStage(stage: Stage): Observable<Stage>{
     return this.http.post<Stage>(`${this.apiServerUrl}/stage/add`, stage);

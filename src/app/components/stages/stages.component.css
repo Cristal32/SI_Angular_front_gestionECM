@@ -1,11 +1,11 @@
 .add-stage-btn,.edit-btn,.edit-stage-btn{
-    background-color: rgb(132, 55, 180);
+    background-color: rgb(182, 55, 43);
     color: white;
 }
 .button-custom-style{
     background: none;
     border: none;
-    color: rgb(132, 55, 180);
+    color: rgb(182, 55, 43);
 }
 /* ========================== card stagiaires ========================== */
 .custom-card{

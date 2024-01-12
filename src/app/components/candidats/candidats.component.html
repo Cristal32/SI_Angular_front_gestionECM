@@ -1,20 +1,20 @@
 <div class="card"> 
-    <div class="card-header"><strong style="color:rgb(107, 24, 191);">Candidats</strong></div>
+    <div class="card-header"><strong style="color:rgb(182, 55, 43);">Candidats</strong></div>
     <div class="card-body">
         <!-----------------------searchbar---------------------------------------------------------------------->
         <div class="input-group mb-3 search-container">
-            <input type="text" class="form-control" placeholder="Chercher un etudiant" aria-label="Recipient's stage" aria-describedby="basic-addon2" id="search-input" >
-            <div class="input-group-append">
+            <input type="text" class="form-control" placeholder="Chercher un candidat" aria-label="Recipient's stage" aria-describedby="basic-addon2" id="search-input" (keyup.enter)="filterResults(filter.value)" #filter>
+            <div class="input-group-append" (click)="resetFilteredList(filter)">
                 <span class="input-group-btn" id="basic-addon2">
                     <button class="search-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16" style="color:rgb(107, 24, 191);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16" style="color:rgb(182, 55, 43);">
                             <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
                         </svg>
                     </button>
                 </span>
             </div>
         </div>
-        <!-----------------------liste candidats---------------------------------------------------------------------->
+        <!-----------------------liste candidats---------------------------------------->
         <div class="card list-candidats custom-card">
             <div class="card-header" style="height: 30px;">
             </div>
@@ -27,8 +27,9 @@
                     <th>Email</th>
                     <th>Sexe</th>
                     <th>Date de naissance</th>
-                    <th>Dossier</th>
-                    <th>Statut</th>
+                    <th>Promo</th>
+                    <!-- <th>Statut</th> -->
+                    <th>Dossier & Statut</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,6 +40,9 @@
                     <td>{{candidat.email}}</td>
                     <td>{{candidat.sexe}}</td>
                     <td>{{candidat.dateNaissance | date: 'dd/MM/yyyy'}}</td>
+                    <td>{{candidat.promo.annee}}</td>
+                    <!-- <td>{{candidat.dossier?.fileName}}</td> -->
+                    <!-- <td>{{candidat.statut}}</td> -->
                     <td>
                         <span *ngIf="candidat.dossier">
                             <button class="button-custom-style" title="Télécharger le dossier du candidat" (click)="downloadCandidatFile(candidat.dossier)">

@@ -1,103 +1,117 @@
 <section class="vh-50">
-    <div class="container h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-xl-9">
-  
-          <h1 class="text-white mb-4" style="color: cadetblue;">Candidat</h1>
-  
-          <div class="card" style="border-radius: 15px;">
-            <div class="card-body">
-  
-            <form (ngSubmit)="createCandidatForm()" enctype="multipart/form-data">
-              <div class="row align-items-center py-3">
-                <div class="col-md-3 ps-5">
-  
-                  <h6 class="mb-0">Email address</h6>
-  
-                </div>
-                <div class="col-md-9 pe-5">
-  
-                  <input name="email" type="email" class="form-control form-control-lg" placeholder="example@example.com" [value]="selectedCandidat.email" name="candidatEmail" #email="ngModel" [(ngModel)]="form.email"/>
-  
-                </div>
-              </div>
-  
-              <hr class="mx-n3">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-9">
 
-              <div class="row align-items-center py-3">
-                <div class="col-md-3 ps-5">
-  
-                  <h6 class="mb-0">Nom</h6>
-  
-                </div>
-                <div class="col-md-9 pe-5">
-  
-                  <input name="nom" type="nom" class="form-control form-control-lg" [value]="selectedCandidat.nom" name="candidatNom" #nom="ngModel" [(ngModel)]="form.nom"/>
-  
-                </div>
-              </div>
-  
-              <hr class="mx-n3">
+        <h1 class="text-white mb-4" style="color: rgb(46, 172, 177);">Candidat</h1>
 
-              <div class="row align-items-center py-3">
-                <div class="col-md-3 ps-5">
-  
-                  <h6 class="mb-0">Prenom</h6>
-  
-                </div>
-                <div class="col-md-9 pe-5">
-  
-                  <input name="prenom" type="prenom" class="form-control form-control-lg" [value]="selectedCandidat.prenom" name="candidatPrenom" #prenom="ngModel" [(ngModel)]="form.prenom"/>
-  
-                </div>
-              </div>
-  
-              <hr class="mx-n3">
+        <div class="card" style="border-radius: 15px;">
+          <div class="card-body">
 
-              <div class="row align-items-center py-3">
-                <div class="col-md-3 ps-5">
-  
-                  <h6 class="mb-0">Date de naissance</h6>
-  
-                </div>
-                <div class="col-md-9 pe-5">
-  
-                  <input name="dateNaissance" type="date" class="form-control form-control-lg" [value]="selectedCandidat.dateNaissance" name="candidatDateNaissance" #dateNaissance="ngModel" [(ngModel)]="form.dateNaissance"/>
-  
-                </div>
+          <form (ngSubmit)="createCandidatForm()" enctype="multipart/form-data">
+            <div class="row align-items-center py-3">
+              <div class="col-md-3 ps-5">
+
+                <h6 class="mb-0">Email address</h6>
+
               </div>
-  
-              <hr class="mx-n3">
-  
-              <div class="input-div">
-                <div class="input-group mb-3" style="width:150px;">
-                    <div class="form-group">
-                        <label class="label-elem" for="candidatDossier_modelInput">Saisir votre dossier</label>
-                        <button type="button" (click)="resetSelectedDossier()" style="background: none; border: none;">
-                            <div style="color:rgb(107, 24, 191);" *ngIf="selectedDossier.name!=''">
-                                <span style="margin-right: 10px;">{{selectedDossier.name}}</span> 
-                                <span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                                      </svg>
-                                </span>
-                            </div>
-                        </button>
-                        <input #createFileInput type="file" class="form-control input-elem" aria-label="Dossier" aria-describedby="basic-addon1" id="candidatDossier_modelInput" name="candidatDossier" #cv="ngModel" [(ngModel)]="form.cv"  (change)="onCreateDossierSelected($event)">
-                    </div>
-                </div>
+              <div class="col-md-9 pe-5">
+
+                <input name="email" type="email" class="form-control form-control-lg" placeholder="example@example.com" [value]="selectedCandidat.email" name="candidatEmail" #email="ngModel" [(ngModel)]="form.email"/>
+
+              </div>
             </div>
-  
-              <hr class="mx-n3">
-  
-              <div class="px-5 py-4">
-                <button type="submit" class="btn btn-primary btn-lg">S'inscrire</button>
+
+            <hr class="mx-n3">
+
+            <div class="row align-items-center py-3">
+              <div class="col-md-3 ps-5">
+
+                <h6 class="mb-0">Nom</h6>
+
               </div>
-            </form>
+              <div class="col-md-9 pe-5">
+
+                <input name="nom" type="nom" class="form-control form-control-lg" [value]="selectedCandidat.nom" name="candidatNom" #nom="ngModel" [(ngModel)]="form.nom"/>
+
+              </div>
             </div>
+
+            <hr class="mx-n3">
+
+            <div class="row align-items-center py-3">
+              <div class="col-md-3 ps-5">
+
+                <h6 class="mb-0">Prenom</h6>
+
+              </div>
+              <div class="col-md-9 pe-5">
+
+                <input name="prenom" type="prenom" class="form-control form-control-lg" [value]="selectedCandidat.prenom" name="candidatPrenom" #prenom="ngModel" [(ngModel)]="form.prenom"/>
+
+              </div>
+            </div>
+
+            <hr class="mx-n3">
+
+            <div class="row align-items-center py-3">
+              <div class="col-md-3 ps-5">
+
+                <h6 class="mb-0">Date de naissance</h6>
+
+              </div>
+              <div class="col-md-9 pe-5">
+
+                <input name="dateNaissance" type="date" class="form-control form-control-lg" [value]="selectedCandidat.dateNaissance" name="candidatDateNaissance" #dateNaissance="ngModel" [(ngModel)]="form.dateNaissance"/>
+
+              </div>
+            </div>
+            <!-- <hr class="mx-n3">
+
+            <div class="row align-items-center py-3">
+              <div class="col-md-3 ps-5">
+
+                <h6 class="mb-0">Promo</h6>
+
+              </div>
+              <div class="col-md-9 pe-5">
+
+                <input name="promo" type="number" class="form-control form-control-lg" [value]="selectedCandidat.promo.annee" name="candidatPromo" #promo="ngModel" [(ngModel)]="form.promo"/>
+
+              </div>
+            </div> -->
+
+            <hr class="mx-n3">
+
+            <div class="input-div">
+              <div class="input-group mb-3" style="width:150px;">
+                  <div class="form-group">
+                      <label class="label-elem" for="candidatDossier_modelInput">Saisir votre dossier</label>
+                      <button type="button" (click)="resetSelectedDossier()" style="background: none; border: none;">
+                          <div style="color:rgb(182, 55, 43);" *ngIf="selectedDossier.name!=''">
+                              <span style="margin-right: 10px;">{{selectedDossier.name}}</span> 
+                              <span>
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                      <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                    </svg>
+                              </span>
+                          </div>
+                      </button>
+                      <input #createFileInput type="file" class="form-control input-elem" aria-label="Dossier" aria-describedby="basic-addon1" id="candidatDossier_modelInput" name="candidatDossier" #cv="ngModel" [(ngModel)]="form.cv"  (change)="onCreateDossierSelected($event)">
+                  </div>
+              </div>
+          </div>
+
+            <hr class="mx-n3">
+
+            <div class="px-5 py-4">
+              <button type="submit" class="btn btn-primary btn-lg" style="background-color:rgb(182, 55, 43) ; margin-left: 18vw;">S'inscrire</button>
+            </div>
+          </form>
           </div>
         </div>
       </div>
     </div>
+  </div>
 </section>

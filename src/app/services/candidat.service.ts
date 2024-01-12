@@ -16,6 +16,10 @@ export class CandidatService {
     return this.http.get<Candidat[]>(`${this.apiServerUrl}/candidat/getAll`);
   }
 
+  public getCandidatByEmail(email: string): Observable<Candidat>{
+    return this.http.get<Candidat>(`${this.apiServerUrl}/candidat/get/${email}`);
+  }
+
   //add candidat
   public addCandidat(candidat: Candidat): Observable<Candidat>{
     return this.http.post<Candidat>(`${this.apiServerUrl}/candidat/add`, candidat);

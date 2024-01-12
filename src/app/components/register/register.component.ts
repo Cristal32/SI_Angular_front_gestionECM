@@ -1,6 +1,7 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Candidat } from 'src/app/models/candidat';
+import { Promo } from 'src/app/models/promo';
 import { CandidatService } from 'src/app/services/candidat.service';
 import { FileService } from 'src/app/services/file.service';
 
@@ -22,7 +23,8 @@ export class RegisterComponent implements OnInit{
     email: '',
     sexe : '',
     dateNaissance : null,
-    dossier: null
+    dossier: null,
+    promo: new Promo()
   };
 
   //tabs
@@ -41,6 +43,7 @@ export class RegisterComponent implements OnInit{
       this.createdCandidat.prenom = this.form.prenom;
       this.createdCandidat.sexe = this.form.sexe;
       this.createdCandidat.dateNaissance = this.form.dateNaissance;
+      this.createdCandidat.promo.annee = new Date().getFullYear();;
     }
 
   //============================================== tabs management ==============================================
