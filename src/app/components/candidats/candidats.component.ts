@@ -115,6 +115,23 @@ export class CandidatsComponent implements OnInit{
     
   }
 
+  MettreEnAttenteCandidat(candidat : Candidat){
+    candidat.statut = 'En attente';
+    this.candidatService.updateCandidat(candidat).subscribe(
+      (updatedCandidat) => {
+        console.log('Candidat en attente avec succès:', updatedCandidat);
+
+        // Create a copy of the filtered list to update the displayed list
+        this.filteredListeCandidats = [...this.listeCandidats];
+      },
+      (error: HttpErrorResponse) => {
+        console.error('Erreur lors de la mise en attente du candidat:', error);
+        // Handle the error accordingly
+      }
+    );
+    
+  }
+
   validerCandidat(candidat : Candidat){
     candidat.statut = 'Accepted';
     this.candidatService.updateCandidat(candidat).subscribe(

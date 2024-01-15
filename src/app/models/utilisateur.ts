@@ -6,7 +6,12 @@ export class Utilisateur{
     id: number = 0;
     password: string = '';
     username : string = '';
-    etudiant: Etudiant = new Etudiant();
-    candidat: Candidat = new Candidat();
-    userRoles: Role[] = []
+    etudiant: Etudiant | null;
+    candidat: Candidat | null;
+    role: Role = new Role();
+
+    constructor() {
+        this.etudiant = null;  // Initialisez à null dans le constructeur
+        this.candidat = null;
+    }
 }

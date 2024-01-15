@@ -5,6 +5,7 @@ export class Candidat {
     email : string = '';
     nom : string = '';
     prenom : string = '';
+    password : string = '';
     dateNaissance: Date = new Date();
     sexe : string = '';
     statut : string = '';

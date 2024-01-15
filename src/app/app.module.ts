@@ -23,6 +23,7 @@ import { AccessComponent } from './components/access/access.component';
 import { RolesComponent } from './components/roles/roles.component';
 import { CandidatComponent } from './components/candidat/candidat.component';
 import { InfosCandidatComponent } from './components/infos-candidat/infos-candidat.component';
+import { CompetencesComponent } from './components/competences/competences.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { InfosCandidatComponent } from './components/infos-candidat/infos-candid
     RolesComponent,
     ProfComponent,
     CandidatComponent,
-    InfosCandidatComponent
+    InfosCandidatComponent,
+    CompetencesComponent
   ],
   imports: [
     BrowserModule,

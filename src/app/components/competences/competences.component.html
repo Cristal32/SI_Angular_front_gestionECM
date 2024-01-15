@@ -1,0 +1,187 @@
+<div class="card"> 
+    <div class="card-header"><strong style="color:rgb(182, 55, 43);">Competences</strong></div>
+    <div class="card-body">
+
+        <!-----------------------searchbar--------------------------------------------->
+
+        <div class="input-group mb-3 search-container">
+            <input type="text" class="form-control" placeholder="Chercher un Competence" aria-label="Recipient's stage" aria-describedby="basic-addon2" id="search-input" (keyup.enter)="filterResults(filter.value)" #filter>
+            <div class="input-group-append" (click)="resetFilteredList(filter)">
+                <span class="input-group-btn" id="basic-addon2">
+                    <button class="search-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16" style="color:rgb(182, 55, 43);">
+                            <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
+                        </svg>
+                    </button>
+                </span>
+            </div>
+        </div>
+    <!--------------------------------liste profs------------------------------------->
+
+        <div class="card list-competence custom-card">
+            <div class="card-header">
+                <!-- create user button -->
+                <button type="button" class="btn create-competence-btn" name="create-competence-btn" data-bs-toggle="modal" data-bs-target="#createCompetenceModal" title="Créer nouvelle competence">
+                    +
+                </button> 
+            </div>
+            <div class="card-header" style="height: 30px;">
+            </div>
+            <div class="card-body custom-card-body">
+                <table class="table table-striped table-hover custom-table" id="competences-table">
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Libelle</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor = "let competence of filteredListeCompetences" class="info-row"> 
+                    
+                    <td>{{competence.code}}</td>
+                    <td>{{competence.libelle}}</td>
+                    <td>{{competence.description}}</td>
+                    <td>
+                        <!--edit icon-->
+                        <button type="button" class="btn edit-competence-pen-btn" name="edit-competence-btn" data-bs-toggle="modal" data-bs-target="#editCompetenceModal" (click)="assignSelectedCompetences(competence); assignEditedCompetences()" style="color:rgb(182, 55, 43);" title="Editer competence">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                            </svg>
+                        </button>
+                        <!--delete icon-->
+                        <button type="button" class="btn delete-competence-x-btn" name="delete-competence-btn" data-bs-toggle="modal" data-bs-target="#deleteCompetenceModal" (click)="assignSelectedCompetences(competence); assignDeletedCompetences()" style="color:rgb(182, 55, 43);" title="Supprimer Competence">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                        </button>
+                    </td>
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+        </div>
+    <!-- </div> -->
+<!-- </div> -->
+
+ <!---===================== create prof modal ====----------------------------->
+
+ <div class="modal fade" id="createCompetenceModal" tabindex="-1" aria-labelledby="createCompetencesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="editCompetencesModalLabel">Nouvelle Competence</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form name="form" id="create-competence-form" (ngSubmit)="f.form.valid && createCompetencesForm()" #f="ngForm" novalidate> 
+                <div class="modal-body edit-competence-modal-body"> 
+                    <div class="tab-navigation">
+                        <button type="button" class="tablinks" (click)="setActiveCreateTab('competence')" [class.active]="createCompetencesModal_ActiveTab === 'competence'">Competence</button>
+                        </div>
+                        <div class="form-wrapper">
+                            <div class="input-div" >
+                                <div class="input-group mb-3" style="width:150px;">
+                                    <div class="form-group">
+                                        <label class="label-elem" for="CompetencesCode_modelInput">Code <span style="color: red">*</span></label>
+                                        <input type="text" class="form-control input-elem" aria-label="Code" aria-describedby="basic-addon1" id="CompetencesCode_modelInput" name="CompetencesCode" #code="ngModel" [(ngModel)]="form.code" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-div">
+                                <div class="input-group mb-3" style="width:150px;">
+                                    <div class="form-group">
+                                        <label class="label-elem" for="CompetencesLibelle_modelInput">Libelle <span style="color: red">*</span></label>
+                                        <input type="text" class="form-control input-elem" aria-label="Libelle" aria-describedby="basic-addon1" id="CompetencesLibelle_modelInput" name="CompetencesLibelle" #libelle="ngModel" [(ngModel)]="form.libelle" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-div">
+                                <div class="input-group mb-3" style="width:150px;">
+                                    <div class="form-group">
+                                        <label class="label-elem" for="CompetencesDescription_modelInput">Description<span style="color: red">*</span></label>
+                                        <input type="text" class="form-control input-elem" aria-label="CompetencesDescrption" aria-describedby="basic-addon1" id="CompetencesDescription_modelInput" name="CompetencesDescription" #description="ngModel" [(ngModel)]="form.description" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>   
+                    </div> 
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        <button type="submit" class="btn edit-competence-btn" name="edit-competence-btn" id="edit-competence-btn">Enregistrer</button>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- ======================== edit prof modal ======================== -->
+<div class="modal fade" id="editCompetenceModal" tabindex="-1" aria-labelledby="editCompetenceModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="editCompetenceModalLabel">Editer Competence</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form (ngSubmit)="editCompetencesForm()"> 
+            <div class="modal-body edit-competence-modal-body">
+                    <div class="form-wrapper">
+                        <div class="input-div">
+                            <div class="input-group mb-3" style="width:150px;">
+                                <div class="form-group">
+                                    <label class="label-elem" for="CompetencesCode">Code</label>
+                                    <input type="text" class="form-control input-elem" aria-label="Code" aria-describedby="basic-addon1" id="CompetencesCode_modelInput" name="CompetencesCode" [value]="selectedCompetences.code" [(ngModel)]="editedCompetences.code">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-div">
+                            <div class="input-group mb-3" style="width:150px;">
+                                <div class="form-group">
+                                    <label class="label-elem" for="CompetencesLibelle">Libelle</label>
+                                    <input type="text" class="form-control input-elem" aria-label="Libelle" aria-describedby="basic-addon1" id="CompetencesLibelle_modelInput" name="CompetencesLibelle" [value]="selectedCompetences.libelle" [(ngModel)]="editedCompetences.description">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-div">
+                            <div class="input-group mb-3" style="width:150px;">
+                                <div class="form-group">
+                                    <label class="label-elem" for="CompetencesDescription">Description</label>
+                                    <input type="text" class="form-control input-elem" aria-label="Description" aria-describedby="basic-addon1" id="CompetencesDescription_modelInput" name="CompetencesDescription" [value]="selectedCompetences.description" [(ngModel)]="editedCompetences.description">
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                <button type="submit" class="btn edit-competence-btn" name="edit-competence-btn" id="edit-competence-btn" data-bs-dismiss="modal">Enregistrer</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================== delete competence modal ============================== -->
+
+<div class="modal fade" id="deleteCompetenceModal" tabindex="-1" aria-labelledby="deleteCompetenceModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="deleteCompetenceModalLabel">Supprimer {{selectedCompetences.libelle}}</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div>Etes-vous sûrs de vouloir supprimer cette competence?<br><br></div>
+            <form (ngSubmit) = "deleteCompetencesForm()"> 
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button type="submit" class="btn delete-competence-btn btn-danger" name="delete-competence-btn" id="delete-competence-btn" data-bs-dismiss="modal">Supprimer</button>
+                  </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+

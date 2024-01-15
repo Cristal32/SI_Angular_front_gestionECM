@@ -16,6 +16,7 @@ import { RolesComponent } from './components/roles/roles.component';
 import { ProfComponent } from './components/prof/prof.component';
 import { CandidatComponent } from './components/candidat/candidat.component';
 import { InfosCandidatComponent } from './components/infos-candidat/infos-candidat.component';
+import { CompetencesComponent } from './components/competences/competences.component';
 
 const routes: Routes = [
   {path:'', redirectTo: 'accueil', pathMatch: 'full'},
@@ -53,7 +54,8 @@ const routes: Routes = [
       {path:'profs', component: ProfComponent},
       {path:'tuteurs', component: TuteursComponent},
       {path:'accesses', component: AccessComponent},
-      {path:'roles', component: RolesComponent}
+      {path:'roles', component: RolesComponent},
+      {path:'competences', component: CompetencesComponent}
     ]
   }
 ];

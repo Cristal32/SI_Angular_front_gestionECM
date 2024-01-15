@@ -42,7 +42,7 @@
                                     </div>
                                     <div class="input-group mb-3" style="width:150px;">
                                         <div class="form-group">
-                                            <label class="label-elem" for="stageEtudiant_modelInput">Etudiant</label>
+                                            <label class="label-elem" for="stageEtudiant_modelInput">Etudiant</label><span style="color: red">*</span>
                                             <select class="form-control" name="etudiant" [(ngModel)]="form.etudiant" ngModel>
                                             <option *ngFor="let etudiant of ListeEtudiants" [ngValue]="etudiant">{{etudiant.nom}} {{etudiant.prenom}}</option>
                                             </select>
@@ -52,7 +52,7 @@
                                 <div class="input-div">
                                     <div class="input-group mb-3" style="width:150px;">
                                         <div class="form-group">
-                                            <label class="label-elem" for="stageType_modelInput">Type</label>
+                                            <label class="label-elem" for="stageType_modelInput">Type de stage</label><span style="color: red">*</span>
                                             <select class="form-control" name="type" [(ngModel)]="form.type" ngModel>
                                             <option *ngFor="let type of ListeTypes" [ngValue]="type">{{type.code}}</option>
                                             </select>
@@ -78,7 +78,7 @@
                                     </div>
                                     <div class="input-group mb-3" style="width:150px;">
                                         <div class="form-group">
-                                            <label class="label-elem" for="stageCompteRendu_modelInput">Compte Rendu <span style="color: red">*</span></label>
+                                            <label class="label-elem" for="stageCompteRendu_modelInput">Compte Rendu</label>
                                             <input type="text" class="form-control input-elem" aria-label="CompteRendu" aria-describedby="basic-addon1" id="stageCompteRendu_modelInput" name="stageCompteRendu" #compte_rendu="ngModel" [(ngModel)]="form.compte_rendu" required>
                                         </div>
                                         <div *ngIf="compte_rendu.errors && f.submitted" style="color: red;">
@@ -89,7 +89,7 @@
                                 <div class="input-div">
                                     <div class="input-group mb-3" style="width:150px;">
                                         <div class="form-group">
-                                            <label class="label-elem" for="stageEntreprise_modelInput">Entreprise</label>
+                                            <label class="label-elem" for="stageEntreprise_modelInput">Entreprise </label><span style="color: red">*</span>
                                             <select class="form-control" name="entreprise" [(ngModel)]="form.entreprise" ngModel>
                                             <option *ngFor="let entreprise of ListeEntreprises" [ngValue]="entreprise">{{entreprise.raison_social}}</option>
                                             </select>

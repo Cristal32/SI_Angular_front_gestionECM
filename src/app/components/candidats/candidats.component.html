@@ -28,7 +28,7 @@
                     <th>Sexe</th>
                     <th>Date de naissance</th>
                     <th>Promo</th>
-                    <!-- <th>Statut</th> -->
+                    <th>Statut</th>
                     <th>Dossier & Statut</th>
                     </tr>
                 </thead>
@@ -42,7 +42,7 @@
                     <td>{{candidat.dateNaissance | date: 'dd/MM/yyyy'}}</td>
                     <td>{{candidat.promo.annee}}</td>
                     <!-- <td>{{candidat.dossier?.fileName}}</td> -->
-                    <!-- <td>{{candidat.statut}}</td> -->
+                    <td>{{candidat.statut}}</td>
                     <td>
                         <span *ngIf="candidat.dossier">
                             <button class="button-custom-style" title="Télécharger le dossier du candidat" (click)="downloadCandidatFile(candidat.dossier)">
@@ -55,11 +55,11 @@
                         </span>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-success" (click)="validerCandidat(candidat)"><i class="fa fa-check" aria-hidden="true"></i>Valider</button>
+                        <button *ngIf="candidat.statut == '' || candidat.statut == 'En attente'" type="button" class="btn btn-success" (click)="validerCandidat(candidat)"><i class="fa fa-check" aria-hidden="true"></i>Valider</button>
                         <span style="margin-left: 5px;"></span>
-                        <button type="button" class="btn btn-primary">En attente</button>
+                        <button *ngIf="candidat.statut == ''" type="button" class="btn btn-primary" (click)="MettreEnAttenteCandidat(candidat)">En attente</button>
                         <span style="margin-left: 5px;"></span>
-                        <button type="button" class="btn btn-danger" (click)="refuserCandidat(candidat)"><i class="fa fa-trash" aria-hidden="true"></i> Refuser</button>
+                        <button *ngIf="candidat.statut == '' || candidat.statut == 'En attente'" type="button" class="btn btn-danger" (click)="refuserCandidat(candidat)"><i class="fa fa-trash" aria-hidden="true"></i> Refuser</button>
                     </td>
                     <!-- <td> -->
                         <!--edit icon-->
