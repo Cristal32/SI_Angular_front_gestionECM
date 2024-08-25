@@ -1,5 +1,9 @@
 # Application frontend pour la gestion des élèves d'une école (ECM) et de leurs stages
 
+# Backend
+Pour voir la partie backend: 
+https://github.com/Cristal32/projet_SI_gestion_ECM
+
 # Table des matières
 
 - [Code](#code)
