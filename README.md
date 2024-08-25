@@ -66,6 +66,22 @@ Pour obtenir plus d'aide sur Angular CLI, utiliser `ng help` ou consulter la pag
   <img src="src/assets/Stages-Admin.png" alt="Interface d'administration"/>
 </p>
 
+## Interface du candidat
+
+<p align="center">
+  <img src="src/assets/MesInfos-Candidat.png" alt="Interface du candidat"/>
+</p>
+
+## Interface de l'étudiant
+
+<p align="center">
+  <img src="src/assets/MesInfos-Etudiant.png" alt="Interface de l'étudiant - infos"/>
+</p>
+
+<p align="center">
+  <img src="src/assets/MesStages-Etudiant.png" alt="Interface de l'étudiant - stages"/>
+</p>
+
 # Contributeurs
 
 - [@Cristal32](https://github.com/Cristal32)
